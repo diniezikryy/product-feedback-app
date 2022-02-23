@@ -15,7 +15,8 @@
 
 ### To-Do
 
-1. From the data.json file, write ProductFeedback component and render the data from an API
+1. From the data.json file, write ProductFeedback component and render the data from an API (DONE)
+2. Refactor the backend files
 
 Each ProductFeedback object has
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:3001/api/productFeedbacks";
+const baseURL = "http://localhost:3001/api/feedbacks";
 
 const getAll = () => {
   const request = axios.get(baseURL);

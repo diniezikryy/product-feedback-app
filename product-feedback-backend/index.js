@@ -3,7 +3,7 @@ const app = express();
 const cors = require("cors");
 app.use(cors());
 
-let productFeedback = [
+let feedbacks = [
   {
     id: 1,
     title: "Add tags for solutions",
@@ -40,8 +40,8 @@ app.get("/", (request, response) => {
   response.send("<h1>Hello Product!</h1>");
 });
 
-app.get("/api/productfeedbacks", (request, response) => {
-  response.json(productFeedback);
+app.get("/api/feedbacks", (request, response) => {
+  response.json(feedbacks);
 });
 
 const PORT = 3001;

@@ -1,29 +1,23 @@
 import { useEffect, useState } from "react";
 
-import ProductFeedback from "./components/ProductFeedback";
+import Feedback from "./components/Feedback";
 
-import productFeedbackService from "./services/productFeedback";
+import feedbackService from "./services/feedback";
 
 const App = () => {
-  const [productFeedbacks, setProductFeedbacks] = useState([]);
+  const [feedbacks, setFeedbacks] = useState([]);
 
   useEffect(() => {
-    productFeedbackService.getAll().then((initialProductFeedback) => {
-      setProductFeedbacks(initialProductFeedback);
+    feedbackService.getAll().then((initialFeedbacks) => {
+      setFeedbacks(initialFeedbacks);
     });
   }, []);
 
   return (
     <div>
       <h1 className="text-6xl">Hello World!</h1>
-      {productFeedbacks.map((productFeedback) => {
-        console.log(productFeedback);
-        return (
-          <ProductFeedback
-            productFeedback={productFeedback}
-            key={productFeedback.id}
-          />
-        );
+      {feedbacks.map((feedback) => {
+        return <Feedback feedback={feedback} key={feedback.id} />;
       })}
     </div>
   );

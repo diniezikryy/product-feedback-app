@@ -11,27 +11,7 @@
 - Add comments and replies to a product feedback request
 - Upvote product feedback requests
 
-23/01/22
-
-### To-Do
-
-1. From the data.json file, write ProductFeedback component and render the data from an API (DONE)
-2. Refactor the backend files
-
-Each ProductFeedback object has
-
-- id
-- title
-- category
-- upvotes
-- status
-- description
-- comments
-  - must be able to contain different comments from different users!
-
-24/02/22
-
-Component Hierarchy
+## Component Hierarchy
 
 App
 
@@ -99,3 +79,27 @@ EditFeedbackForm
     - Button (Save Changes)
 
 RoadmapDashboard (In Progress...)
+
+23/01/22
+
+### To-Do
+
+1. From the data.json file, write ProductFeedback component and render the data from an API (DONE)
+2. Refactor the backend files (NOT DONE)
+
+Each ProductFeedback object has
+
+- id
+- title
+- category
+- upvotes
+- status
+- description
+- comments
+  - must be able to contain different comments from different users!
+
+24/02/22
+
+## To-Do
+
+1. Test out some routing (DONE)

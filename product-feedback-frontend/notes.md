@@ -103,7 +103,7 @@ Each ProductFeedback object has
 ## To-Do
 
 1. Test out some routing (DONE)
-2. Use a locally hosted mongoDB and express API to continue building the application
+2. Use a locally hosted mongoDB and express API to continue building the application (DONE)
 
 Locally hosted mongoDB -> ProductFeedbacks
 ProductFeedbacks must have the following collections
@@ -116,3 +116,20 @@ ProductFeedbacks must have the following collections
 Notes:
 
 - When a comment is submitted, the Id of the feedback post must also match the post id
+
+05/03/22
+
+## To-Do
+
+1. Build the homepage of the application
+
+- Make the FeedbackCard first
+- Move on to the components related to that
+- Move on to the SuggestionsNavBar
+- Move on to the Suggestions List
+- Category Buttons List
+- Roadmap Container
+
+2. Start working on the Feedback Detail Portion
+3. Work on being able to edit the Feedback
+4. Work on adding a new feedback feature

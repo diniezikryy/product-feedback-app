@@ -1,8 +1,6 @@
-import mongoose from "mongoose";
-import feedback from "../../product-feedback-frontend/src/services/feedback";
-const { Schema } = mongoose;
+const mongoose = require("mongoose");
 
-const feedbackSchema = new Schema({
+const feedbackSchema = new mongoose.Schema({
   id: Number,
   title: String,
   category: String,
@@ -11,4 +9,12 @@ const feedbackSchema = new Schema({
   description: String,
 });
 
-const Feedback = mongoose.model("Feedback", feedbackSchema);
+feedbackSchema.set("toJSON", {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString();
+    delete returnedObject._id;
+    delete returnedObject.__v;
+  },
+});
+
+module.exports = mongoose.model("Feedback", feedbackSchema);

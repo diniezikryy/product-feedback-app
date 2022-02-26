@@ -1,8 +1,6 @@
 import React from "react";
 
 const Feedback = ({ feedback }) => {
-  const comments = feedback.comments;
-
   return (
     <div className="border-2">
       <p>id: {feedback.id}</p>
@@ -12,9 +10,6 @@ const Feedback = ({ feedback }) => {
       <p>status: {feedback.status}</p>
       <p>description: {feedback.description}</p>
       <b>comments</b>
-      {comments.map((comment) => {
-        return <p>{comment.content}</p>;
-      })}
     </div>
   );
 };

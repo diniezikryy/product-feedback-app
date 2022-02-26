@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <div>
-      <h1 className="text-6xl">Hello World!</h1>
+      <h1 className="text-6xl m2">Product Feedback App</h1>
       {feedbacks.map((feedback) => {
         return <Feedback feedback={feedback} key={feedback.id} />;
       })}

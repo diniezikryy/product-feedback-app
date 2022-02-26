@@ -98,8 +98,21 @@ Each ProductFeedback object has
 - comments
   - must be able to contain different comments from different users!
 
-24/02/22
+26/02/22
 
 ## To-Do
 
 1. Test out some routing (DONE)
+2. Use a locally hosted mongoDB and express API to continue building the application
+
+Locally hosted mongoDB -> ProductFeedbacks
+ProductFeedbacks must have the following collections
+
+1. Users
+2. Feedbacks
+3. Ideas
+4. Comments
+
+Notes:
+
+- When a comment is submitted, the Id of the feedback post must also match the post id

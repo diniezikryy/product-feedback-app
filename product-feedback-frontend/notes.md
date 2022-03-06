@@ -123,7 +123,9 @@ Notes:
 
 1. Build the homepage of the application
 
-- Make the FeedbackCard first
+- Make the homepage first
+- Make the Feedback first
+- Make the FeedbackDetail
 - Move on to the components related to that
 - Move on to the SuggestionsNavBar
 - Move on to the Suggestions List

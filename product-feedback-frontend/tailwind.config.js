@@ -10,9 +10,10 @@ module.exports = {
         "navy-primary": "hsl(231, 33%, 34%)",
         "navy-secondary": "hsl(230, 31%, 31%)",
         "navy-tertiary": "hsl(224, 20%, 49%)",
-        white: "#FFFFFF",
-        purple: "hsl(282, 83%, 52%)",
-        peach: "hsl(14, 83%, 74%)",
+        "color-white": "#FFFFFF",
+        "purple-primary": "hsl(282, 83%, 52%)",
+        "purple-secondary": "#C75AF6",
+        "peach-primary": "hsl(14, 83%, 74%)",
       },
     },
     fontFamily: {

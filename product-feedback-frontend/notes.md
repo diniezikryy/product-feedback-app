@@ -135,3 +135,10 @@ Notes:
 2. Start working on the Feedback Detail Portion
 3. Work on being able to edit the Feedback
 4. Work on adding a new feedback feature
+
+11/03/22
+
+- Using boxes, created a simple markup to see design
+- Will one by one implement the designs
+
+1. Designed the FeedbackNavbar component

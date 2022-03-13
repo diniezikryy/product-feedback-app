@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import Feedback from "../Feedback";
+import Feedback from "../Homepage/Feedback/Feedback";
 
 import feedbackService from "../../services/feedback";
 
@@ -14,7 +14,7 @@ const FeedbackList = () => {
   }, []);
 
   return (
-    <div className="">
+    <div className="px-6">
       {feedbacks.map((feedback) => {
         return <Feedback feedback={feedback} key={feedback.id} />;
       })}

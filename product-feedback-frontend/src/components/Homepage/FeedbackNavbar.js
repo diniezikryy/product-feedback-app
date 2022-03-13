@@ -8,7 +8,7 @@ const FeedbackNavBar = () => {
   return (
     <div className="p-6 mb-6">
       <div className="flex flex-row items-center px-6 py-6 rounded-lg bg-navy-primary">
-        <div className="flex">
+        <div className="flex ">
           <Lightbulb />
           <p className="ml-3 text-lg font-semibold text-white">6 Feedbacks</p>
         </div>

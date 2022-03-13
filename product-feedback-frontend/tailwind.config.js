@@ -3,8 +3,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "bg-main-secondary": "hsl(14, 83%, 74%)",
-        "bg-main-primary": "hsl(230, 60%, 98%)",
+        "main-primary": "hsl(230, 60%, 98%)",
+        "main-secondary": "hsl(231, 100%, 97%)",
         "blue-primary": "hsl(230, 76%, 59%)",
         "blue-secondary": "hsl(204, 94%, 68%)",
         "navy-primary": "hsl(231, 33%, 34%)",

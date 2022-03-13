@@ -7,7 +7,10 @@ import { ReactComponent as Lightbulb } from "../../assets/suggestions/icon-sugge
 import { useSelector } from "react-redux";
 
 const FeedbackNavBar = () => {
-  const feedbackCount = useSelector((state) => state.feedbacks.feedbackCount);
+  const feedbackCount = useSelector(
+    (state) => state.feedbacks.feedbacks.length
+  );
+
   return (
     <div className="p-6 mb-6">
       <div className="flex flex-row items-center px-6 py-6 rounded-lg bg-navy-primary">

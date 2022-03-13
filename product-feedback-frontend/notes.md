@@ -123,22 +123,26 @@ Notes:
 
 1. Build the homepage of the application
 
-- Make the homepage first
-- Make the Feedback first
-- Make the FeedbackDetail
-- Move on to the components related to that
-- Move on to the SuggestionsNavBar
-- Move on to the Suggestions List
-- Category Buttons List
-- Roadmap Container
+- Style the homepage first (DONE)
+- Style the Feedback first (DONE)
+- Style the FeedbackNavBar (DONE)
+- Style the FeedbackList (DONE)
+- Style the CategoryButtonsBox (DONE)
 
-2. Start working on the Feedback Detail Portion
-3. Work on being able to edit the Feedback
-4. Work on adding a new feedback feature
+13/03/22
 
-11/03/22
+- Finished styling the homepage
 
-- Using boxes, created a simple markup to see design
-- Will one by one implement the designs
+14/03/22
 
-1. Designed the FeedbackNavbar component
+## To-Do
+
+- Use redux to update the feedbackList state
+- Make the drop down sort options work
+
+20/03/22
+
+## To-Do
+
+- Style Feedback Detail
+- Be able to add a new feedback Detail

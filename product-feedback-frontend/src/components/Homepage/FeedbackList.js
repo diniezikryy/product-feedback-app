@@ -4,22 +4,22 @@ import Feedback from "../Homepage/Feedback/Feedback";
 
 import feedbackService from "../../services/feedback";
 
-import { useDispatch } from "react-redux";
-import { incrementByAmount } from "../../reducers/feedbackSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  incrementByAmount,
+  initialiseFeedbacks,
+} from "../../reducers/feedbackSlice";
 
 const FeedbackList = () => {
-  // Traditional State
-  const [feedbacks, setFeedbacks] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    feedbackService.getAll().then((initialFeedbacks) => {
-      setFeedbacks(initialFeedbacks);
-    });
-  }, []);
+    dispatch(initialiseFeedbacks());
+  }, [dispatch]);
 
-  // Redux
-  const dispatch = useDispatch();
-  dispatch(incrementByAmount(feedbacks.length));
+  const feedbacks = useSelector((state) => {
+    return state.feedbacks.feedbacks;
+  });
 
   return (
     <div className="px-6">

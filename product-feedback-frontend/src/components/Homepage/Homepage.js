@@ -12,8 +12,8 @@ const Homepage = () => {
   return (
     <div className="container mx-auto">
       <div className="flex flex-row flex-wrap py-4">
-        <aside className="w-full px-2 bg-green-100 sm:w-1/3 md:w-1/4 ">
-          <div className="sticky top-0 w-full p-4">
+        <aside className="w-full px-2 py-6 sm:w-1/3 md:w-1/4 ">
+          <div className="sticky top-0 w-full ">
             <Logo />
             <FeedbackCategory />
           </div>

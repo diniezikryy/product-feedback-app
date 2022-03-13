@@ -1,23 +1,15 @@
 import React from "react";
 
+import CategoryButton from "../Elements/CategoryButton";
+
 const FeedbackCategory = () => {
   return (
     <div className="flex flex-wrap gap-x-2 gap-y-3.5 p-8 bg-white  rounded-lg ">
-      <div className="px-3 py-1.5 text-sm font-semibold tracking-wide capitalize rounded-lg max-w-min text-blue-primary bg-main-secondary">
-        MPTW
-      </div>
-
-      <div className="px-3 py-1.5 text-sm font-semibold tracking-wide capitalize rounded-lg max-w-min text-blue-primary bg-main-secondary">
-        HSTC
-      </div>
-
-      <div className="px-3 py-1.5 text-sm font-semibold tracking-wide capitalize rounded-lg max-w-min text-blue-primary bg-main-secondary">
-        SCTW
-      </div>
-
-      <div className="px-3 py-1.5 text-sm font-semibold tracking-wide capitalize rounded-lg max-w-min text-blue-primary bg-main-secondary">
-        IDTW
-      </div>
+      <CategoryButton text="MPTW" />
+      <CategoryButton text="SCTW" />
+      <CategoryButton text="HSTC" />
+      <CategoryButton text="IDTW" />
+      <CategoryButton text="ATW" />
     </div>
   );
 };

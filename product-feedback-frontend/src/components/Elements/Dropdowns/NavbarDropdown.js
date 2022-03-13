@@ -43,7 +43,7 @@ const NavbarDropdown = () => {
               Most Upvotes
             </a>
           </li>
-          <li className="px-10 border-b">
+          <li className="px-10">
             <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:text-purple-primary"
@@ -51,7 +51,7 @@ const NavbarDropdown = () => {
               Least Upvotes
             </a>
           </li>
-          <li className="px-10 border-b">
+          {/* <li className="px-10 border-b">
             <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:text-purple-primary"
@@ -66,7 +66,7 @@ const NavbarDropdown = () => {
             >
               Least comments
             </a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </>

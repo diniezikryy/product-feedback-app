@@ -4,13 +4,18 @@ import NavbarDropdown from "../Elements/Dropdowns/NavbarDropdown";
 
 import { ReactComponent as Lightbulb } from "../../assets/suggestions/icon-suggestions.svg";
 
+import { useSelector } from "react-redux";
+
 const FeedbackNavBar = () => {
+  const feedbackCount = useSelector((state) => state.feedbacks.feedbackCount);
   return (
     <div className="p-6 mb-6">
       <div className="flex flex-row items-center px-6 py-6 rounded-lg bg-navy-primary">
         <div className="flex ">
           <Lightbulb />
-          <p className="ml-3 text-lg font-semibold text-white">6 Feedbacks</p>
+          <p className="ml-3 text-lg font-semibold text-white">
+            {feedbackCount} Feedbacks
+          </p>
         </div>
         <div className="ml-6">
           <NavbarDropdown />

@@ -5,9 +5,10 @@ import Feedback from "../Homepage/Feedback/Feedback";
 import feedbackService from "../../services/feedback";
 
 import { useDispatch, useSelector } from "react-redux";
+
 import {
-  incrementByAmount,
   initialiseFeedbacks,
+  setFeedbacks,
 } from "../../reducers/feedbackSlice";
 
 const FeedbackList = () => {

@@ -6,6 +6,7 @@ const feedbackSlice = createSlice({
   initialState: {
     feedbackCount: 0,
     feedbacks: [],
+    feedbackSortType: "mostUpvotes",
   },
   reducers: {
     increment: (state) => {
@@ -20,6 +21,9 @@ const feedbackSlice = createSlice({
     setFeedbacks(state, action) {
       state.feedbacks = action.payload;
     },
+    setFeedbackSortType: (state, action) => {
+      state.feedbackSortType = action.payload;
+    },
   },
 });
 
@@ -28,6 +32,7 @@ export const {
   decrement,
   incrementByAmount,
   setFeedbacks,
+  setFeedbackSortType,
 } = feedbackSlice.actions;
 
 export const initialiseFeedbacks = () => {

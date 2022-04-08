@@ -37,10 +37,13 @@ const NavbarDropdown = () => {
       <button
         id="dropdownDefault"
         data-dropdown-toggle="dropdown"
-        class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        class="text-white bg-navy-primary focus:ring-4 focus:outline-none focus:ring-blue-3   00 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center   "
         type="button"
       >
-        Dropdown button{" "}
+        <span className="pr-1.5 font-normal text-slate-300">Sort By : </span>
+        <span className="font-bold text-main-secondary">
+          {sortType === "mostUpvotes" ? "Most Upvotes" : "Least Upvotes"}{" "}
+        </span>
         <svg
           class="ml-2 w-4 h-4"
           fill="none"
@@ -56,18 +59,15 @@ const NavbarDropdown = () => {
           ></path>
         </svg>
       </button>
-      <div
-        id="dropdown"
-        class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700"
-      >
+      <div id="dropdown" class="hidden z-10 w-44 bg-white rounded-lg shadow">
         <ul
-          class="py-1 text-sm text-gray-700 dark:text-gray-200"
+          class="py-1 text-sm text-navy-tertiary"
           aria-labelledby="dropdownDefault"
         >
           <li>
             <a
               href="#"
-              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              class="block py-2 px-4 hover:text-purple-primary border-b"
               onClick={() => {
                 dispatch(setFeedbackSortType("mostUpvotes"));
               }}
@@ -78,7 +78,7 @@ const NavbarDropdown = () => {
           <li>
             <a
               href="#"
-              class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              class="block py-2 px-4 hover:text-purple-primary"
               onClick={() => {
                 dispatch(setFeedbackSortType("leastUpvotes"));
               }}

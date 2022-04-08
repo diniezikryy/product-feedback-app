@@ -139,6 +139,9 @@ Notes:
 
 - Use redux to update the feedbackList state
 - Make the drop down sort options work
+- Steps on making the drop-down sort work
+  1. Define a filteredList in the feedbackSlice
+  2. Write a dispatch action to change the state of the list according to the setting of the dropdown
 
 20/03/22
 
@@ -146,3 +149,5 @@ Notes:
 
 - Style Feedback Detail
 - Be able to add a new feedback Detail
+
+

@@ -1,6 +1,8 @@
 import React from "react";
 
 import { ReactComponent as ArrowUp } from "../../../assets/shared/icon-arrow-up.svg";
+import CategoryButton from "../../Elements/CategoryButton";
+import FeedbackCategory from "../FeedbackCategory";
 
 {
   /* <p>title: {feedback.title}</p>
@@ -25,9 +27,7 @@ const Feedback = ({ feedback }) => {
         <p className="mb-3 font-light text-md text-navy-tertiary">
           {feedback.description}
         </p>
-        <div className="px-3 py-1.5 text-sm font-semibold tracking-wide capitalize rounded-lg max-w-min text-blue-primary bg-main-secondary">
-          {feedback.category}
-        </div>
+        <CategoryButton text={feedback.category} />
       </div>
     </div>
   );

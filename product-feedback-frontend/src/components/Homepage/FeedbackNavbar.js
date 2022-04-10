@@ -4,6 +4,8 @@ import NavbarDropdown from "../Elements/Dropdowns/NavbarDropdown";
 
 import { ReactComponent as Lightbulb } from "../../assets/suggestions/icon-suggestions.svg";
 
+import { Link } from "react-router-dom";
+
 import { useSelector } from "react-redux";
 
 const FeedbackNavBar = () => {
@@ -24,7 +26,9 @@ const FeedbackNavBar = () => {
           <NavbarDropdown />
         </div>
         <div className="ml-auto">
-          <ButtonPrimary text="+ Add Feedback" />
+          <Link to="/addFeedback">
+            <ButtonPrimary text="+ Add Feedback" />
+          </Link>
         </div>
       </div>
     </div>

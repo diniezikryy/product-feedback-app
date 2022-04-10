@@ -14,6 +14,7 @@ module.exports = {
         "purple-primary": "hsl(282, 83%, 52%)",
         "purple-secondary": "#C75AF6",
         "peach-primary": "hsl(14, 83%, 74%)",
+        "hover-color": "#CFD7FF",
       },
     },
     fontFamily: {

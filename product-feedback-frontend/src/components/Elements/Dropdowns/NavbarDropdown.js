@@ -37,7 +37,7 @@ const NavbarDropdown = () => {
       <button
         id="dropdownDefault"
         data-dropdown-toggle="dropdown"
-        class="text-white bg-navy-primary focus:ring-4 focus:outline-none focus:ring-blue-3   00 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center   "
+        className="text-white bg-navy-primary focus:ring-4 focus:outline-none focus:ring-blue-3   00 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center   "
         type="button"
       >
         <span className="pr-1.5 font-normal text-slate-300">Sort By : </span>
@@ -45,29 +45,32 @@ const NavbarDropdown = () => {
           {sortType === "mostUpvotes" ? "Most Upvotes" : "Least Upvotes"}{" "}
         </span>
         <svg
-          class="ml-2 w-4 h-4"
+          className="w-4 h-4 ml-2"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M19 9l-7 7-7-7"
           ></path>
         </svg>
       </button>
-      <div id="dropdown" class="hidden z-10 w-44 bg-white rounded-lg shadow">
+      <div
+        id="dropdown"
+        className="z-10 hidden bg-white rounded-lg shadow w-44"
+      >
         <ul
-          class="py-1 text-sm text-navy-tertiary"
+          className="py-1 text-sm text-navy-tertiary"
           aria-labelledby="dropdownDefault"
         >
           <li>
             <a
               href="#"
-              class="block py-2 px-4 hover:text-purple-primary border-b"
+              className="block px-4 py-2 border-b hover:text-purple-primary"
               onClick={() => {
                 dispatch(setFeedbackSortType("mostUpvotes"));
               }}
@@ -78,7 +81,7 @@ const NavbarDropdown = () => {
           <li>
             <a
               href="#"
-              class="block py-2 px-4 hover:text-purple-primary"
+              className="block px-4 py-2 hover:text-purple-primary"
               onClick={() => {
                 dispatch(setFeedbackSortType("leastUpvotes"));
               }}

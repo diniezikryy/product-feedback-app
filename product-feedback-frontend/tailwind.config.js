@@ -16,6 +16,9 @@ module.exports = {
         "peach-primary": "hsl(14, 83%, 74%)",
         "hover-color": "#CFD7FF",
       },
+      width: {
+        456: "28.5rem",
+      },
     },
     fontFamily: {
       sans: ["Jost", "sans-serif"],

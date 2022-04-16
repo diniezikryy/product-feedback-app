@@ -24,6 +24,9 @@ const feedbackSlice = createSlice({
     setFeedbackSortType: (state, action) => {
       state.feedbackSortType = action.payload;
     },
+    appendFeedback: (state, action) => {
+      state.feedbacks.push(action.payload);
+    },
   },
 });
 
@@ -33,12 +36,20 @@ export const {
   incrementByAmount,
   setFeedbacks,
   setFeedbackSortType,
+  appendFeedback,
 } = feedbackSlice.actions;
 
 export const initialiseFeedbacks = () => {
   return async (dispatch) => {
     const feedbacks = await feedbackService.getAll();
     dispatch(setFeedbacks(feedbacks));
+  };
+};
+
+export const createFeedback = (content) => {
+  return async (dispatch) => {
+    const newFeedback = await feedbackService.createNewFeedback(content);
+    dispatch(appendFeedback(newFeedback));
   };
 };
 

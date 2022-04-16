@@ -16,4 +16,17 @@ feedbacksRouter.get("/:id", async (request, response) => {
   }
 });
 
+feedbacksRouter.post("/", async (request, response) => {
+  const content = request.body.content;
+  const feedback = new Feedback({
+    title: content.title,
+    category: content.category,
+    upvotes: 0,
+    status: "suggestion",
+    description: content.description,
+  });
+  const savedFeedback = await feedback.save();
+  response.json(savedFeedback.toJSON());
+});
+
 module.exports = feedbacksRouter;

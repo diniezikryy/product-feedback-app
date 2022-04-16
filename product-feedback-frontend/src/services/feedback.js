@@ -7,4 +7,10 @@ const getAll = () => {
   return request.then((response) => response.data);
 };
 
-export default { getAll };
+const createNewFeedback = async (content) => {
+  const newFeedbackObject = { content };
+  const response = await axios.post(baseURL, newFeedbackObject);
+  return response.data;
+};
+
+export default { getAll, createNewFeedback };

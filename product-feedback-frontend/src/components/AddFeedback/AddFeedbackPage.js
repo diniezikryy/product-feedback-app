@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import {
-  setFeedbackTitle,
   setFeedbackCategory,
   setFeedbackDetail,
 } from "../../reducers/addFeedbackSlice";
@@ -10,23 +9,36 @@ import { createFeedback } from "../../reducers/feedbackSlice";
 
 /* import ButtonPrimary from "../Elements/Buttons/ButtonPrimary"; */
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
+import TextFieldDefault from "../Elements/Forms/TextFieldDefault";
+import DropdownDefault from "../Elements/Dropdowns/DropdownDefault/DropdownDefault";
 
 /* import { ReactComponent as ArrowDown } from "../../assets/shared/icon-arrow-down.svg";
 import { ReactComponent as ArrowUp } from "../../assets/shared/icon-arrow-up.svg";
  */
 const AddFeedbackPage = () => {
   const [dropdownPressed, setDropdownPressed] = useState(false);
+  const [feedbackTitle, setFeedbackTitle] = useState("");
+  const [feedbackCategory, setFeedbackCategory] = useState("Feature");
 
   const dispatch = useDispatch();
-  const feedbackCategory = useSelector((state) => {
-    return state.addFeedback.feedbackCategory;
-  });
-  const feedbackTitle = useSelector((state) => {
-    return state.addFeedback.feedbackTitle;
-  });
+
   const feedbackDetail = useSelector((state) => {
     return state.addFeedback.feedbackDetail;
   });
+
+  const handleFeedbackTitleChange = (event) => {
+    event.preventDefault();
+    setFeedbackTitle(event.target.value);
+  };
+
+  const handleFeedbackCategoryChange = (event) => {
+    event.preventDefault();
+    console.log("dropdown option changed lmao");
+  };
+
+  const handleDropdownClick = () => {
+    setDropdownPressed(!dropdownPressed);
+  };
 
   const addFeedback = (event) => {
     event.preventDefault();
@@ -56,93 +68,19 @@ const AddFeedbackPage = () => {
         </header>
 
         {/* Feedback Title */}
-        <section className="mb-6">
-          <h2 className="text-sm font-bold">Feedback Title</h2>
-          <h4 className="mb-3 text-sm font-light">
-            Add a short descriptive headline
-          </h4>
-          <input
-            type="text"
-            id="base-input"
-            onChange={(event) => dispatch(setFeedbackTitle(event.target.value))}
-            className="bg-main-secondary text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-          ></input>
-        </section>
-
+        <TextFieldDefault
+          label="Feedback Title"
+          formDescription="Add a short description headline"
+          handleChange={handleFeedbackTitleChange}
+        />
         {/* Category */}
-        <section className="mb-6">
-          <h2 className="text-sm font-bold">Category</h2>
-          <h4 className="mb-3 text-sm font-light">
-            Choose a category for your feedback
-          </h4>
-          <button
-            id="dropdownDefault"
-            data-dropdown-toggle="dropdown"
-            className="flex justify-between  w-full text-white  bg-main-secondary focus:ring-4 focus:outline-none focus:ring-blue-3   00 font-medium rounded-md text-sm px-4 py-2.5 text-center inline-flex items-center   "
-            type="button"
-            onClick={() => setDropdownPressed(!dropdownPressed)}
-          >
-            <span className="font-normal text-navy-primary">
-              {feedbackCategory}
-            </span>
-            {/* {dropdownPressed ? <ArrowUp /> : <ArrowDown />} */}
-          </button>
-          <div
-            id="dropdown"
-            className="z-10 hidden bg-white rounded-lg drop-shadow-2xl"
-          >
-            <ul
-              className="py-1 text-sm text-navy-tertiary"
-              aria-labelledby="dropdownDefault"
-            >
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 border-b hover:text-purple-primary"
-                  onClick={() => dispatch(setFeedbackCategory("Feature"))}
-                >
-                  Feature
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 border-b hover:text-purple-primary"
-                  onClick={() => dispatch(setFeedbackCategory("Enhancement"))}
-                >
-                  Enhancement
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 border-b hover:text-purple-primary"
-                  onClick={() => dispatch(setFeedbackCategory("UI"))}
-                >
-                  UI
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 border-b hover:text-purple-primary"
-                  onClick={() => dispatch(setFeedbackCategory("UX"))}
-                >
-                  UX
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#"
-                  className="block px-4 py-2 hover:text-purple-primary"
-                  onClick={() => dispatch(setFeedbackCategory("Bug"))}
-                >
-                  Bug
-                </a>
-              </li>
-            </ul>
-          </div>
-        </section>
+        <DropdownDefault
+          label="Category"
+          formDescription="Choose a category for your feedback"
+          handleChange={handleFeedbackCategoryChange}
+          handleDropdownClick={handleDropdownClick}
+          selected={feedbackCategory}
+        />
 
         {/* Feedback Detail */}
         <section className="mb-8">

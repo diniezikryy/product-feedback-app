@@ -153,3 +153,12 @@ Notes:
 16/04/22
 
 ! Need to remember to work on the design of category dropdown
+
+18/04/22
+
+- Plan for this week
+
+1. Refactor the frontend code to make it cleaner !!
+2. Write some Jest tests for both the backend and frontend !!
+3. Finish designing the addFeedbackPage !!!
+4. Change the addFeedback from using redux to useState !

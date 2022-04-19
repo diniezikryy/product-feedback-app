@@ -7,8 +7,6 @@ const DropdownDefault = ({
   handleDropdownClick,
   selected,
 }) => {
-  const [selectedOption, setSelectedOption] = useState(selected);
-
   return (
     <section className="mb-6">
       <h2 className="text-sm font-bold">{label}</h2>
@@ -20,7 +18,7 @@ const DropdownDefault = ({
         type="button"
         onClick={handleDropdownClick}
       >
-        <span className="font-normal text-navy-primary">{selectedOption}</span>
+        <span className="font-normal text-navy-primary">{selected}</span>
         {/* {dropdownPressed ? <ArrowUp /> : <ArrowDown />} */}
       </button>
       <div
@@ -35,7 +33,7 @@ const DropdownDefault = ({
             <a
               href="#"
               className="block px-4 py-2 border-b hover:text-purple-primary"
-              onClick={() => setSelectedOption("Feature")}
+              onClick={() => handleChange("Feature")}
             >
               Feature
             </a>
@@ -44,7 +42,7 @@ const DropdownDefault = ({
             <a
               href="#"
               className="block px-4 py-2 border-b hover:text-purple-primary"
-              onClick={() => setSelectedOption("Feature")}
+              onClick={() => handleChange("Enhancement")}
             >
               Enhancement
             </a>
@@ -53,7 +51,7 @@ const DropdownDefault = ({
             <a
               href="#"
               className="block px-4 py-2 border-b hover:text-purple-primary"
-              onClick={() => setSelectedOption("UI")}
+              onClick={() => handleChange("UI")}
             >
               UI
             </a>
@@ -62,7 +60,7 @@ const DropdownDefault = ({
             <a
               href="#"
               className="block px-4 py-2 border-b hover:text-purple-primary"
-              onClick={() => setSelectedOption("UX")}
+              onClick={() => handleChange("UX")}
             >
               UX
             </a>
@@ -71,7 +69,7 @@ const DropdownDefault = ({
             <a
               href="#"
               className="block px-4 py-2 hover:text-purple-primary"
-              onClick={() => setSelectedOption("Bug")}
+              onClick={() => handleChange("Bug")}
             >
               Bug
             </a>

@@ -1,10 +1,7 @@
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-import {
-  setFeedbackCategory,
-  setFeedbackDetail,
-} from "../../reducers/addFeedbackSlice";
+import { setFeedbackDetail } from "../../reducers/addFeedbackSlice";
 import { createFeedback } from "../../reducers/feedbackSlice";
 
 /* import ButtonPrimary from "../Elements/Buttons/ButtonPrimary"; */
@@ -32,8 +29,8 @@ const AddFeedbackPage = () => {
   };
 
   const handleFeedbackCategoryChange = (event) => {
-    event.preventDefault();
-    console.log("dropdown option changed lmao");
+    console.log(event.target.value);
+    setFeedbackCategory(event.target.value);
   };
 
   const handleDropdownClick = () => {
@@ -77,7 +74,7 @@ const AddFeedbackPage = () => {
         <DropdownDefault
           label="Category"
           formDescription="Choose a category for your feedback"
-          handleChange={handleFeedbackCategoryChange}
+          handleChange={setFeedbackCategory}
           handleDropdownClick={handleDropdownClick}
           selected={feedbackCategory}
         />

@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import { setFeedbackDetail } from "../../reducers/addFeedbackSlice";
@@ -20,6 +20,7 @@ const AddFeedbackPage = () => {
   const optionsArray = ["Feature", "Enhancement", "UI", "UX", "Bug"];
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const feedbackDetail = useSelector((state) => {
     return state.addFeedback.feedbackDetail;
@@ -44,9 +45,8 @@ const AddFeedbackPage = () => {
       description: feedbackDetail,
     };
     dispatch(createFeedback(content));
+    navigate("/");
   };
-
-  // Should be a function here to handle the onsubmit function
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">

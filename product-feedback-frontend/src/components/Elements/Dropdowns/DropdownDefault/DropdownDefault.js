@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DropdownOption from "./DropdownOption";
 
 const DropdownDefault = ({
   label,
@@ -6,6 +7,7 @@ const DropdownDefault = ({
   handleChange,
   handleDropdownClick,
   selected,
+  optionsArray,
 }) => {
   return (
     <section className="mb-6">
@@ -29,51 +31,15 @@ const DropdownDefault = ({
           className="py-1 text-sm text-navy-tertiary"
           aria-labelledby="dropdownDefault"
         >
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 border-b hover:text-purple-primary"
-              onClick={() => handleChange("Feature")}
-            >
-              Feature
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 border-b hover:text-purple-primary"
-              onClick={() => handleChange("Enhancement")}
-            >
-              Enhancement
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 border-b hover:text-purple-primary"
-              onClick={() => handleChange("UI")}
-            >
-              UI
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 border-b hover:text-purple-primary"
-              onClick={() => handleChange("UX")}
-            >
-              UX
-            </a>
-          </li>
-          <li>
-            <a
-              href="#"
-              className="block px-4 py-2 hover:text-purple-primary"
-              onClick={() => handleChange("Bug")}
-            >
-              Bug
-            </a>
-          </li>
+          {optionsArray.map((option) => {
+            return (
+              <DropdownOption
+                option={option}
+                optionText={option}
+                handleChange={handleChange}
+              />
+            );
+          })}
         </ul>
       </div>
     </section>

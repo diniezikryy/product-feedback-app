@@ -17,6 +17,8 @@ const AddFeedbackPage = () => {
   const [feedbackTitle, setFeedbackTitle] = useState("");
   const [feedbackCategory, setFeedbackCategory] = useState("Feature");
 
+  const optionsArray = ["Feature", "Enhancement", "UI", "UX", "Bug"];
+
   const dispatch = useDispatch();
 
   const feedbackDetail = useSelector((state) => {
@@ -26,11 +28,6 @@ const AddFeedbackPage = () => {
   const handleFeedbackTitleChange = (event) => {
     event.preventDefault();
     setFeedbackTitle(event.target.value);
-  };
-
-  const handleFeedbackCategoryChange = (event) => {
-    console.log(event.target.value);
-    setFeedbackCategory(event.target.value);
   };
 
   const handleDropdownClick = () => {
@@ -77,6 +74,7 @@ const AddFeedbackPage = () => {
           handleChange={setFeedbackCategory}
           handleDropdownClick={handleDropdownClick}
           selected={feedbackCategory}
+          optionsArray={optionsArray}
         />
 
         {/* Feedback Detail */}
@@ -88,7 +86,6 @@ const AddFeedbackPage = () => {
           </h4>
           <textarea
             onChange={(event) => {
-              console.log(event.target.value);
               dispatch(setFeedbackDetail(event.target.value));
             }}
             className="bg-main-secondary text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-24 p-2.5"

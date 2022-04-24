@@ -162,3 +162,7 @@ Notes:
 2. Write some Jest tests for both the backend and frontend !!
 3. Finish designing the addFeedbackPage !!!
 4. Change the addFeedback from using redux to useState !
+5. Write out the feedbackDetail
+6. Write out editFeedback and make it able to delete feedback
+7. Add mobile responsiveness
+8. Need to rewrite the mongo database to be able to include comments...

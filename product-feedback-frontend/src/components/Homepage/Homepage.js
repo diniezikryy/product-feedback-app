@@ -1,27 +1,16 @@
-import { useEffect, useState } from "react";
-import React from "react";
-
-import Logo from "./Logo";
-import FeedbackCategory from "./FeedbackCategory";
-import FeedbackNavBar from "./FeedbackNavbar";
-import FeedbackList from "./FeedbackList";
-
-import feedbackService from "../../services/feedback";
-
 const Homepage = () => {
   return (
-    <div className="container mx-auto">
-      <div className="flex flex-row flex-wrap py-4">
-        <aside className="w-full px-2 py-6 sm:w-1/3 md:w-1/4 ">
-          <div className="sticky top-0 w-full ">
-            <Logo />
-            <FeedbackCategory />
-          </div>
-        </aside>
-        <main role="main" className="w-full px-2 sm:w-2/3 md:w-3/4">
-          <FeedbackNavBar />
-          <FeedbackList />
-        </main>
+    <div>
+      <div className="border-2 border-solid border-blue-primary">
+        <div className="h-20 border-2 border-solid w-96">Hero</div>
+      </div>
+      <div className="hidden border-2 border-solid border-blue-primary sm:contents">
+        <div className="border-2 border-solid">Category</div>
+        <div className="border-2 border-solid">Roadmap</div>
+      </div>
+      <div className="border-2 border-solid border-blue-primary">
+        <div className="border-2 border-solid">Feedback Navbar</div>
+        <div className="border-2 border-solid">Feedback List</div>
       </div>
     </div>
   );

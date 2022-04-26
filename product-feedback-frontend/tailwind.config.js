@@ -15,6 +15,7 @@ module.exports = {
         "purple-secondary": "#C75AF6",
         "peach-primary": "hsl(14, 83%, 74%)",
         "hover-color": "#CFD7FF",
+        "dark-grey": "F2F4FE",
       },
       width: {
         456: "28.5rem",

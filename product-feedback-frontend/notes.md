@@ -166,3 +166,9 @@ Notes:
 6. Write out editFeedback and make it able to delete feedback
 7. Add mobile responsiveness
 8. Need to rewrite the mongo database to be able to include comments...
+
+30/04/22
+
+Decided to revamp the whole frontend as it was less of headache to build it ground up from scratch than to make the current design mobile responsive
+
+The design is only responsive up to tablet sizes, so the next step is to make it responsive up to desktop sizes, but i decided to stop here to work on other components such as FeedbackList. FeedbackList should show the No Feedback SVG when there are no feedbacks. Another component that should be worked on is the Roadmap and the FeedbackList, as well as the individual Feedback Cards. So can start working on this for tomorrow.

@@ -3,6 +3,7 @@ import { useState } from "react";
 import Hero from "./Hero";
 import FeedbackNavbar from "./FeedbackNavbar/FeedbackNavbar";
 import FeedbackCategory from "./FeedbackCategory";
+import FeedbackRoadmap from "./FeedbackRoadmap";
 import Slideover from "./Slideover";
 
 const Homepage = () => {
@@ -21,7 +22,7 @@ const Homepage = () => {
           <div className="flex flex-col gap-y-6">
             <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
             <FeedbackCategory />
-            <FeedbackCategory />
+            <FeedbackRoadmap />
           </div>
 
           <div className="flex flex-col w-full">
@@ -37,7 +38,7 @@ const Homepage = () => {
         <div className="flex flex-row justify-between mb-10">
           <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
           <FeedbackCategory />
-          <FeedbackCategory />
+          <FeedbackRoadmap />
         </div>
       </div>
 
@@ -49,7 +50,7 @@ const Homepage = () => {
 
       <div className="hidden">
         <FeedbackCategory />
-        <FeedbackCategory />
+        <FeedbackRoadmap />
       </div>
 
       {/* Slideover */}

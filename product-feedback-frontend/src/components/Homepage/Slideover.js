@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 
 import FeedbackCategory from "./FeedbackCategory";
+import FeedbackRoadmap from "./FeedbackRoadmap";
 
 const Slideover = ({ open, setOpen }) => {
   return (
@@ -40,7 +41,7 @@ const Slideover = ({ open, setOpen }) => {
                     {/* Replace with your content */}
                     <div className="absolute inset-0 flex flex-col gap-6 px-6">
                       <FeedbackCategory />
-                      <FeedbackCategory />
+                      <FeedbackRoadmap />
                     </div>
                     {/* /End replace */}
                   </div>

@@ -10,7 +10,7 @@ const SortDropdown = () => {
   const [selected, setSelected] = useState(sortOptions[0]);
 
   return (
-    <div className="">
+    <div className="ml-0 sm:ml-9">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative">
           <Listbox.Button className="relative w-full text-left cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">

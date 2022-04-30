@@ -3,11 +3,13 @@ import { useState } from "react";
 import Hero from "./Hero";
 import FeedbackNavbar from "./FeedbackNavbar/FeedbackNavbar";
 import FeedbackCategory from "./FeedbackCategory";
+import FeedbackList from "./FeedbackList/FeedbackList";
 import FeedbackRoadmap from "./FeedbackRoadmap";
 import Slideover from "./Slideover";
 
 const Homepage = () => {
   const [open, setOpen] = useState(false);
+  const [feedbacks, setFeedbacks] = useState([]);
 
   const handleSlideoverOpen = () => {
     setOpen(!open);
@@ -26,8 +28,8 @@ const Homepage = () => {
           </div>
 
           <div className="flex flex-col w-full">
-            <FeedbackNavbar />
-            <div className="border-2 border-solid">Feedback List</div>
+            <FeedbackNavbar feedbackNum={feedbacks.length} />
+            <FeedbackList />
           </div>
         </div>
       </div>
@@ -59,8 +61,8 @@ const Homepage = () => {
       </div>
 
       <div className="lg:hidden">
-        <FeedbackNavbar />
-        <div className="border-2 border-solid">Feedback List</div>
+        <FeedbackNavbar feedbackNum={feedbacks.length} />
+        <FeedbackList />
       </div>
     </div>
   );

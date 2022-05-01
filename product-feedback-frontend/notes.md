@@ -172,3 +172,14 @@ Notes:
 Decided to revamp the whole frontend as it was less of headache to build it ground up from scratch than to make the current design mobile responsive
 
 The design is only responsive up to tablet sizes, so the next step is to make it responsive up to desktop sizes, but i decided to stop here to work on other components such as FeedbackList. FeedbackList should show the No Feedback SVG when there are no feedbacks. Another component that should be worked on is the Roadmap and the FeedbackList, as well as the individual Feedback Cards. So can start working on this for tomorrow.
+
+01/05/22
+
+FeedbackRoadmap ✅
+FeedbackNavbar ✅
+NoFeedbackCard ✅
+
+Worked on the Roadmap component, but just for show, the functionality can be added later, though I did complete the responsive no feedback card, but before I will need to complete the FeedbackCards to finish the FeedbackList, but this brings me to a new issue, which is to redo the backend to send feedbacks + the comments, but for now I will use hardcoded data to frame up the feedback card. After that, feedback list will be completed.
+
+FeedbackList
+FeedbackCard

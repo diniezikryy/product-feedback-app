@@ -1,9 +1,16 @@
+import FeedbackCard from "./FeedbackCard";
 import NoFeedbackCard from "./NoFeedbackCard";
 
-const FeedbackList = () => {
+const FeedbackList = ({ feedbacks, showFeedbacks }) => {
   return (
     <div className="mx-6 my-8 sm:mx-0">
-      <NoFeedbackCard />
+      {showFeedbacks ? (
+        feedbacks.map((feedback, index) => (
+          <FeedbackCard key={index} feedback={feedback} />
+        ))
+      ) : (
+        <NoFeedbackCard />
+      )}
     </div>
   );
 };

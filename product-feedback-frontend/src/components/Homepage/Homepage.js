@@ -7,10 +7,12 @@ import FeedbackList from "./FeedbackList/FeedbackList";
 import FeedbackRoadmap from "./FeedbackRoadmap";
 import Slideover from "./Slideover";
 
+import feedbackService from "../../services/feedback";
+
 const Homepage = () => {
   const [open, setOpen] = useState(false);
   const [feedbacks, setFeedbacks] = useState([
-    {
+    /* {
       id: 2,
       title: "Add a dark theme option",
       category: "feature",
@@ -62,9 +64,15 @@ const Homepage = () => {
           ],
         },
       ],
-    },
+    }, */
   ]);
   const [showFeedbacks, setShowFeedbacks] = useState(false);
+
+  useEffect(() => {
+    feedbackService.getAll().then((initialFeedbacks) => {
+      setFeedbacks(initialFeedbacks);
+    });
+  });
 
   useEffect(() => {
     if (feedbacks.length > 0) {

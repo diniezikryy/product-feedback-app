@@ -188,6 +188,5 @@ Finished working on the feedback card and the feedback list, even showing the No
 
 02/05/22
 
-Make the mongo atlas work with the comments also and load up some sample data
+Make the mongo atlas work with the comments also and load up some sample data ✅
 Make the Sort dropdown work
-Initialise Redux?

@@ -78,7 +78,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className="container p-0 mx-auto sm:mt-14 md:px-9 lg:px-40">
+    <div className="container p-0 mx-auto sm:mt-14 md:px-9">
       {/* When screen is > 1024px (Desktop Screens) */}
       <div className="hidden lg:contents">
         <div className="flex flex-row gap-x-8">

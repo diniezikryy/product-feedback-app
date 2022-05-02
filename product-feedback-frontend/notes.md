@@ -181,5 +181,13 @@ NoFeedbackCard ✅
 
 Worked on the Roadmap component, but just for show, the functionality can be added later, though I did complete the responsive no feedback card, but before I will need to complete the FeedbackCards to finish the FeedbackList, but this brings me to a new issue, which is to redo the backend to send feedbacks + the comments, but for now I will use hardcoded data to frame up the feedback card. After that, feedback list will be completed.
 
-FeedbackList
-FeedbackCard
+FeedbackList ✅
+FeedbackCard ✅
+
+Finished working on the feedback card and the feedback list, even showing the NoFeedbackCard when there are no feedbacks. Now what's left is to make the backend be able to send the data up from mongo to frontend.
+
+02/05/22
+
+Make the mongo atlas work with the comments also and load up some sample data
+Make the Sort dropdown work
+Initialise Redux?

@@ -2,8 +2,14 @@ const feedbacksRouter = require("express").Router();
 const { response } = require("express");
 const Feedback = require("../models/feedback");
 
+feedbacksRouter.get("/test", async (request, response) => {
+  response.writeHead(200, { "Content-Type": "text/plain" });
+  response.end("Hello World");
+});
+
 feedbacksRouter.get("/", async (request, response) => {
   const feedbacks = await Feedback.find({});
+  console.log(feedbacks);
   response.json(feedbacks);
 });
 

@@ -1,12 +1,17 @@
 const mongoose = require("mongoose");
 
 const feedbackSchema = new mongoose.Schema({
-  id: Number,
   title: String,
   category: String,
   upvotes: Number,
   status: String,
   description: String,
+  comments: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Comment",
+    },
+  ],
 });
 
 // later we can use mongoose to link the comments data to the feedback

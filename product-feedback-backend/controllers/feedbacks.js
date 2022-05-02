@@ -2,14 +2,13 @@ const feedbacksRouter = require("express").Router();
 const { response } = require("express");
 const Feedback = require("../models/feedback");
 const Comment = require("../models/comment");
-
-feedbacksRouter.get("/test", async (request, response) => {
-  response.writeHead(200, { "Content-Type": "text/plain" });
-  response.end("Hello World");
-});
+const User = require("../models/user");
 
 feedbacksRouter.get("/", async (request, response) => {
-  const feedbacks = await Feedback.find({}).populate("comments");
+  const feedbacks = await Feedback.find({}).populate({
+    path: "comments",
+    populate: { path: "user" },
+  });
   response.json(feedbacks);
 });
 

@@ -14,8 +14,6 @@ const feedbackSchema = new mongoose.Schema({
   ],
 });
 
-// later we can use mongoose to link the comments data to the feedback
-
 feedbackSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();

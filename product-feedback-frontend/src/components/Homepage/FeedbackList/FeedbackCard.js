@@ -4,8 +4,8 @@ import { ReactComponent as CommentsIcon } from "./icon-comments.svg";
 
 const FeedbackCard = ({ feedback }) => {
   return (
-    <div className="p-6 rounded-lg sm:flex sm:flex-row bg-main-primary">
-      <div className="flex-col items-center justify-center hidden px-2 py-2 mr-10 text-sm font-semibold tracking-wide capitalize rounded-lg cursor-pointer max-h-14 sm:block sm:flex hover:bg-hover-color max-w-min bg-main-secondary">
+    <div className="p-6 mb-5 rounded-lg sm:flex sm:flex-row bg-main-primary">
+      <div className="flex-col items-center justify-center hidden px-2 py-2 mr-10 text-sm font-semibold tracking-wide capitalize rounded-lg cursor-pointer max-h-14 sm:block sm:flex hover:bg-hover-color min-w-[40px] bg-main-secondary">
         <ArrowUp />
         <p className="mt-2 text-sm text-navy-primary">{feedback.upvotes}</p>
       </div>

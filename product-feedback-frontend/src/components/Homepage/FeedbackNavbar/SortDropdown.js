@@ -6,7 +6,12 @@ import { ReactComponent as CheckIcon } from "./icon-check.svg";
 // Need to make this sort function actually work LMAO
 
 const SortDropdown = () => {
-  const sortOptions = ["Most Upvotes", "Least Upvotes"];
+  const sortOptions = [
+    "Most Upvotes",
+    "Least Upvotes",
+    "Most Comments",
+    "Least Comments",
+  ];
   const [selected, setSelected] = useState(sortOptions[0]);
 
   return (

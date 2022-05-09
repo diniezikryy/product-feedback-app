@@ -21,17 +21,27 @@ feedbacksRouter.get("/:id", async (request, response) => {
   }
 });
 
-feedbacksRouter.post("/", async (request, response) => {
-  const content = request.body.content;
+// Adding a single feedback to the database w/o user
+feedbacksRouter.post("/", async (req, res, next) => {
+  const body = req.body;
+  console.log(req);
+
   const feedback = new Feedback({
-    title: content.title,
-    category: content.category,
+    title: body.title,
+    category: body.category,
     upvotes: 0,
-    status: "suggestion",
-    description: content.description,
+    status: body.status,
+    description: body.description,
+    comments: [],
   });
-  const savedFeedback = await feedback.save();
-  response.json(savedFeedback.toJSON());
+
+  try {
+    const savedFeedback = await feedback.save();
+    res.status(201);
+    res.json(savedFeedback);
+  } catch (exception) {
+    next(exception);
+  }
 });
 
 module.exports = feedbacksRouter;

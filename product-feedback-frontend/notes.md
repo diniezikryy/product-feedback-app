@@ -191,3 +191,7 @@ Finished working on the feedback card and the feedback list, even showing the No
 Make the mongo atlas work with the comments also and load up some sample data ✅
 
 Finished working on linking the backend to the frontend, but currently thinking to not use redux inside the project because there is absolutely no need. What I plan to work on next is to be able to add a new data into the web app, and subsequently, be able to sort using comments or upvotes.
+
+08/05/22
+
+Managed to be able to add data to the database through Postman, now left to code the adding feedback form, and subsequently add comments as a user.

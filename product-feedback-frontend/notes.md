@@ -195,3 +195,7 @@ Finished working on linking the backend to the frontend, but currently thinking 
 08/05/22
 
 Managed to be able to add data to the database through Postman, now left to code the adding feedback form, and subsequently add comments as a user.
+
+15/05/22
+
+Managed to build the tablet responsive add feedback form but need to complete the frontend design. The backend works, just need to link the page to the backend and the add feedback page will be good to go.

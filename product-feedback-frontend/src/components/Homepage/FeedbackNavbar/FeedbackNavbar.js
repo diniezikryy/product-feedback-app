@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import ButtonPrimary from "../../Elements/Buttons/ButtonPrimary";
 import SortDropdown from "./SortDropdown";
 import { ReactComponent as Lightbulb } from "./icon-suggestions.svg";
@@ -16,7 +18,9 @@ const FeedbackNavbar = ({ feedbackNum }) => {
         </div>
         <SortDropdown />
         <div className="ml-auto">
-          <ButtonPrimary text="+ Add Feedback" />
+          <Link to="/add-feedback">
+            <ButtonPrimary text="+ Add Feedback" />
+          </Link>
         </div>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import ButtonPrimary from "../Elements/Buttons/ButtonPrimary";
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
+import CategoryDropdown from "./CategoryDropdown";
 import TextFieldDefault from "../Elements/Forms/TextFieldDefault";
 import { ReactComponent as NewFeedbackIcon } from "./icon-new-feedback.svg";
 
@@ -11,7 +12,7 @@ const AddFeedbackForm = () => {
   const [feedbackCategory, setFeedbackCategory] = useState("Feature");
 
   return (
-    <div className="p-6 sm:mx-28">
+    <div className="p-6 sm:mx-28 md:max-w-xl md:mx-auto">
       <div className="mt-8">
         <Link to="/">
           <ButtonTertiary buttonText="Go Back" />
@@ -35,13 +36,7 @@ const AddFeedbackForm = () => {
           <TextFieldDefault />
         </div>
 
-        <div className="mt-6">
-          <h2 className="text-sm font-bold text-navy-primary">Category</h2>
-          <p className="text-sm font-light text-navy-tertiary">
-            Choose category for your feedback
-          </p>
-          <TextFieldDefault />
-        </div>
+        <CategoryDropdown />
 
         <div className="mt-6 mb-10">
           <h2 className="text-sm font-bold text-navy-primary">
@@ -54,9 +49,20 @@ const AddFeedbackForm = () => {
           <TextFieldDefault />
         </div>
 
-        <ButtonPrimary text="Add Feedback" />
-        <div className="mt-4">
-          <ButtonSecondary text="Cancel" />
+        <div className="sm:hidden">
+          <ButtonPrimary text="Add Feedback" />
+          <div className="mt-4">
+            <ButtonSecondary text="Cancel" />
+          </div>
+        </div>
+
+        <div className="hidden ml-auto sm:flex">
+          <div className="ml-auto mr-4">
+            <ButtonSecondary text="Cancel" />
+          </div>
+          <div className="">
+            <ButtonPrimary text="Add Feedback" />
+          </div>
         </div>
       </div>
     </div>

@@ -199,3 +199,7 @@ Managed to be able to add data to the database through Postman, now left to code
 15/05/22
 
 Managed to build the tablet responsive add feedback form but need to complete the frontend design. The backend works, just need to link the page to the backend and the add feedback page will be good to go.
+
+22/05/22
+
+Finished the frontend portion of the addFeedback form but it needs to be functional and also refactored.

@@ -7,7 +7,7 @@ const TextField = (props) => {
         type="text"
         id="base-input"
         onChange={props.handleChange}
-        className="bg-main-secondary text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+        className="block w-full p-3 text-sm text-gray-900 rounded-lg bg-main-secondary focus:ring-blue-500 focus:border-blue-500"
       ></input>
     </section>
   );

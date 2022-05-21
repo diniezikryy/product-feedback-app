@@ -46,7 +46,7 @@ const AddFeedbackForm = () => {
             Include any specific comments on what should be improved, added,
             etc.
           </p>
-          <TextFieldDefault />
+          <textarea className="mt-4 bg-main-secondary text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-24 p-2.5"></textarea>
         </div>
 
         <div className="sm:hidden">

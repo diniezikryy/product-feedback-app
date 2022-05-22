@@ -27,11 +27,11 @@ feedbacksRouter.post("/", async (req, res, next) => {
   console.log(req);
 
   const feedback = new Feedback({
-    title: body.title,
-    category: body.category,
+    title: body.content.title,
+    category: body.content.category,
     upvotes: 0,
-    status: body.status,
-    description: body.description,
+    status: body.content.status,
+    description: body.content.description,
     comments: [],
   });
 

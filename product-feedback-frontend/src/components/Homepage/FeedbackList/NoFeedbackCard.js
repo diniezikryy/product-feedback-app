@@ -13,7 +13,9 @@ const NoFeedbackCard = () => {
         Got a suggestion? Found a bug that needs to be squashed? We love hearing
         about new ideas to improve our app.
       </p>
-      <ButtonPrimary text="+ Add Feedback" />
+      <div className="w-fit">
+        <ButtonPrimary text="+ Add Feedback" />
+      </div>
     </div>
   );
 };

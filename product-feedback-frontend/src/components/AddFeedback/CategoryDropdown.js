@@ -1,13 +1,11 @@
 import React from "react";
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { ReactComponent as CheckIcon } from "./icon-check.svg";
 
-const CategoryDropdown = () => {
+const CategoryDropdown = ({ setFeedbackCategory, selected, options }) => {
   const categoryOptions = ["Feature", "UI", "UX", "Enhancement", "Bug"];
-
-  const [selected, setSelected] = useState(categoryOptions[0]);
 
   return (
     <div className="">
@@ -17,7 +15,7 @@ const CategoryDropdown = () => {
       </p>
       {/* Where the dropdown goes */}
       <div className="">
-        <Listbox value={selected} onChange={setSelected}>
+        <Listbox value={selected} onChange={setFeedbackCategory}>
           <div className="relative mt-4">
             <Listbox.Button className="relative flex items-center w-full px-4 py-3 text-left rounded-lg cursor-default sm:px-6 bg-main-secondary bg-main-tertiary focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
               <span className="block text-sm font-normal truncate text-navy-primary">

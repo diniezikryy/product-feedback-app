@@ -3,8 +3,10 @@ import { useState } from "react";
 
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
-import CategoryDropdown from "./CategoryDropdown";
-import TextFieldDefault from "../Elements/Forms/TextFieldDefault";
+import LabelledDropdown from "../Elements/Dropdowns/LabelledDropdown";
+import LabelledTextField from "../Elements/Forms/LabelledTextField";
+import LabelledTextArea from "../Elements/Forms/LabelledTextArea";
+
 import { ReactComponent as NewFeedbackIcon } from "./icon-new-feedback.svg";
 
 import feedbackService from "../../services/feedback";
@@ -21,6 +23,12 @@ const AddFeedbackForm = () => {
   const handleFeedbackTitleChange = (event) => {
     event.preventDefault();
     setFeedbackTitle(event.target.value);
+  };
+
+  const handleFeedbackDetailChange = (event) => {
+    event.preventDefault();
+    console.log(feedbackDetail);
+    setFeedbackDetail(event.target.value);
   };
 
   const addFeedback = (event) => {
@@ -56,39 +64,27 @@ const AddFeedbackForm = () => {
           Create New Feedback
         </h1>
 
-        <div className="mt-6">
-          <h2 className="text-sm font-bold text-navy-primary">
-            Feedback Title
-          </h2>
-          <p className="text-sm font-light text-navy-tertiary">
-            Add a short, descriptive headline
-          </p>
-          <TextFieldDefault handleChange={handleFeedbackTitleChange} />
-        </div>
+        <LabelledTextField
+          label="Feedback Title"
+          description="Add a short descriptive headline"
+          handleChange={handleFeedbackTitleChange}
+        />
 
-        <CategoryDropdown
-          setFeedbackCategory={setFeedbackCategory}
+        <LabelledDropdown
+          label="Category"
+          description="Choose a category for your feedback"
+          handleChange={setFeedbackCategory}
           selected={feedbackCategory}
           options={categoryOptions}
         />
 
-        <div className="mt-6 mb-10">
-          <h2 className="text-sm font-bold text-navy-primary">
-            Feedback Detail
-          </h2>
-          <p className="text-sm font-light text-navy-tertiary">
-            Include any specific comments on what should be improved, added,
-            etc.
-          </p>
-          <textarea
-            className="mt-4 bg-main-secondary text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-24 p-2.5"
-            onChange={(event) => {
-              setFeedbackDetail(event.target.value);
-            }}
-          ></textarea>
-        </div>
+        <LabelledTextArea
+          label="Feedback Detail"
+          description="Include any specific comments on what should be improved, added, etc."
+          handleChange={handleFeedbackDetailChange}
+        />
 
-        <div className="sm:hidden">
+        <div className="mt-10 sm:hidden">
           <button
             type="submit"
             className="w-full px-6 py-3 text-sm font-semibold leading-5 text-center text-white rounded-lg cursor-pointer text-b bg-fuchsia-600 hover:bg-fuchsia-400"
@@ -100,7 +96,7 @@ const AddFeedbackForm = () => {
           </div>
         </div>
 
-        <div className="hidden ml-auto sm:flex">
+        <div className="hidden mt-10 ml-auto sm:flex">
           <div className="ml-auto mr-4">
             <ButtonSecondary text="Cancel" />
           </div>

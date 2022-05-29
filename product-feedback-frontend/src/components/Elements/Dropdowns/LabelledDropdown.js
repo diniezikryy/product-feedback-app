@@ -4,18 +4,20 @@ import { Listbox, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { ReactComponent as CheckIcon } from "./icon-check.svg";
 
-const CategoryDropdown = ({ setFeedbackCategory, selected, options }) => {
-  const categoryOptions = ["Feature", "UI", "UX", "Enhancement", "Bug"];
-
+const LabelledDropdown = ({
+  label,
+  description,
+  handleChange,
+  selected,
+  options,
+}) => {
   return (
-    <div className="">
-      <h2 className="text-sm font-bold text-navy-primary">Category</h2>
-      <p className="text-sm font-light text-navy-tertiary">
-        Choose category for your feedback
-      </p>
+    <div className="mt-6">
+      <h2 className="text-sm font-bold text-navy-primary">{label}</h2>
+      <p className="text-sm font-light text-navy-tertiary">{description}</p>
       {/* Where the dropdown goes */}
       <div className="">
-        <Listbox value={selected} onChange={setFeedbackCategory}>
+        <Listbox value={selected} onChange={handleChange}>
           <div className="relative mt-4">
             <Listbox.Button className="relative flex items-center w-full px-4 py-3 text-left rounded-lg cursor-default sm:px-6 bg-main-secondary bg-main-tertiary focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
               <span className="block text-sm font-normal truncate text-navy-primary">
@@ -35,7 +37,7 @@ const CategoryDropdown = ({ setFeedbackCategory, selected, options }) => {
               leaveTo="opacity-0"
             >
               <Listbox.Options className="absolute w-full py-1 mt-1 overflow-auto text-sm bg-white rounded-md shadow-lg max-h-60 focus:outline-none sm:text-sm">
-                {categoryOptions.map((option, optionIdx) => (
+                {options.map((option, optionIdx) => (
                   <Listbox.Option
                     key={optionIdx}
                     className={({ active }) =>
@@ -72,4 +74,4 @@ const CategoryDropdown = ({ setFeedbackCategory, selected, options }) => {
   );
 };
 
-export default CategoryDropdown;
+export default LabelledDropdown;

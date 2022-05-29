@@ -1,4 +1,5 @@
 import ButtonPrimary from "../../Elements/Buttons/ButtonPrimary";
+import { Link } from "react-router-dom";
 
 import { ReactComponent as Empty } from "../../../assets/suggestions/illustration-empty.svg";
 
@@ -14,7 +15,9 @@ const NoFeedbackCard = () => {
         about new ideas to improve our app.
       </p>
       <div className="w-fit">
-        <ButtonPrimary text="+ Add Feedback" />
+        <Link to="/add-feedback">
+          <ButtonPrimary text="+ Add Feedback" />
+        </Link>
       </div>
     </div>
   );

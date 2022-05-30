@@ -209,3 +209,7 @@ Finished the frontend portion of the addFeedback form but it needs to be functio
 Refactored the addFeedback Page, just need to add form validation! hint: formik yup! Plan to move forward is to include form validation, as well as designing the Feedback Detail Page and also be able to add your own comments. That will be a difficult because im thinking of letting users log in first then they are able to add their own comments but I will need to create a login page as well as create a users page. This is slowly looking like a social media app lmao...
 
 https://betterprogramming.pub/a-step-by-step-guide-to-handle-form-validation-in-react-83232cd52316
+
+30/05/22
+
+Implemented notification feature for all 4 types of alerts.

@@ -2,11 +2,11 @@ const ErrorAlert = ({ message }) => {
   return (
     <div
       id="alert-2"
-      className="flex p-4 mb-4 bg-red-100 rounded-lg dark:bg-red-200"
+      className="flex p-4 bg-red-100 sm:mb-4 sm:rounded-lg dark:bg-red-200"
       role="alert"
     >
       <svg
-        className="flex-shrink-0 w-5 h-5 text-red-700 dark:text-red-800"
+        className="flex-shrink-0 w-5 h-5 text-red-700 sm:w-7 sm:h-7 dark:text-red-800"
         fill="currentColor"
         viewBox="0 0 20 20"
         xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ const ErrorAlert = ({ message }) => {
           clipRule="evenodd"
         ></path>
       </svg>
-      <div className="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
+      <div className="ml-3 text-base font-medium text-red-700 dark:text-red-800">
         {message}
       </div>
     </div>

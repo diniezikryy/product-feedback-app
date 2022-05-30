@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useContext } from "react";
+import { useState } from "react";
 
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
@@ -9,16 +9,12 @@ import LabelledTextArea from "../Elements/Forms/LabelledTextArea";
 
 import { ReactComponent as NewFeedbackIcon } from "./icon-new-feedback.svg";
 
-import NotificationContext from "../../NotificationContext";
-
 import feedbackService from "../../services/feedback";
 
-const AddFeedbackForm = () => {
+const EditFeedbackForm = () => {
   const [feedbackTitle, setFeedbackTitle] = useState("");
   const [feedbackCategory, setFeedbackCategory] = useState("Feature");
   const [feedbackDetail, setFeedbackDetail] = useState("");
-
-  const { setNewMessage } = useContext(NotificationContext);
 
   const navigate = useNavigate();
 
@@ -44,7 +40,6 @@ const AddFeedbackForm = () => {
       description: feedbackDetail,
     };
     feedbackService.createNewFeedback(content);
-    setNewMessage("Successfully added new feedback", "success");
     navigate("/");
   };
 
@@ -116,4 +111,4 @@ const AddFeedbackForm = () => {
   );
 };
 
-export default AddFeedbackForm;
+export default EditFeedbackForm;

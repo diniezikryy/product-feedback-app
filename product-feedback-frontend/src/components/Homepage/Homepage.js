@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import Hero from "./Hero";
 import FeedbackNavbar from "./FeedbackNavbar/FeedbackNavbar";
@@ -6,6 +6,9 @@ import FeedbackCategory from "./FeedbackCategory";
 import FeedbackList from "./FeedbackList/FeedbackList";
 import FeedbackRoadmap from "./FeedbackRoadmap";
 import Slideover from "./Slideover";
+import Alerts from "../Elements/Alerts/Alerts";
+
+import NotificationContext from "../../NotificationContext";
 
 import feedbackService from "../../services/feedback";
 
@@ -13,6 +16,8 @@ const Homepage = () => {
   const [open, setOpen] = useState(false);
   const [feedbacks, setFeedbacks] = useState([]);
   const [showFeedbacks, setShowFeedbacks] = useState(false);
+
+  const { message, type } = useContext(NotificationContext);
 
   useEffect(() => {
     feedbackService.getAll().then((initialFeedbacks) => {
@@ -33,6 +38,7 @@ const Homepage = () => {
 
   return (
     <div className="container p-0 mx-auto sm:mt-14 md:px-9">
+      <Alerts type={type} message={message} />
       {/* When screen is > 1024px (Desktop Screens) */}
       <div className="hidden lg:contents">
         <div className="flex flex-row gap-x-8">

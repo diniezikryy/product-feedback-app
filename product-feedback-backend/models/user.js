@@ -4,6 +4,13 @@ const userSchema = new mongoose.Schema({
   image: String,
   name: String,
   username: String,
+  passwordHash: String,
+  feedbacks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Feedback",
+    },
+  ],
 });
 
 userSchema.set("toJSON", {

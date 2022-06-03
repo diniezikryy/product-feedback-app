@@ -57,13 +57,13 @@ const LoginPage = () => {
             </button>
           </div>
 
-          <Link to="/register">
-            <a
+          <Link id="RouterNavLink" to="/register">
+            <p
               className="text-xs font-light underline decoration-solid text-blue-primary"
               href="#"
             >
               Dont have an account? Sign up!
-            </a>
+            </p>
           </Link>
         </section>
 

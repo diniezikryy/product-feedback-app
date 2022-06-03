@@ -36,7 +36,6 @@ const RegisterPage = () => {
           <div className="relative">
             <input
               type="text"
-              id="base-input"
               className="block w-full p-3 mt-4 text-sm text-gray-900 rounded-lg bg-main-secondary focus:ring-blue-500 focus:border-blue-500"
             ></input>
           </div>
@@ -50,7 +49,6 @@ const RegisterPage = () => {
           <div className="relative">
             <input
               type={showPassword === false ? "password" : "text"}
-              id="base-input"
               className="block w-full p-3 mt-4 text-sm text-gray-900 rounded-lg bg-main-secondary focus:ring-blue-500 focus:border-blue-500"
             ></input>
             <button
@@ -72,7 +70,6 @@ const RegisterPage = () => {
           <div className="relative">
             <input
               type={showPassword === false ? "password" : "text"}
-              id="base-input"
               className="block w-full p-3 mt-4 text-sm text-gray-900 rounded-lg bg-main-secondary focus:ring-blue-500 focus:border-blue-500"
             ></input>
             <button

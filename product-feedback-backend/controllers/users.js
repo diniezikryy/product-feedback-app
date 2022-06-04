@@ -11,6 +11,15 @@ usersRouter.get("/", async (request, response) => {
 usersRouter.post("/", async (request, response) => {
   const { username, name, password } = request.body;
 
+  // Checks if there is an existing user w/ the same username and rejects it
+  const existingUser = await User.findOne({ username });
+  if (existingUser) {
+    return response.status(400).json({
+      error: "username must be unique",
+    });
+  }
+
+  // Else, a new user gets added
   const saltRounds = 10;
   const passwordHash = await bcrypt.hash(password, saltRounds);
 

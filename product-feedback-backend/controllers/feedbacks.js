@@ -5,10 +5,12 @@ const Comment = require("../models/comment");
 const User = require("../models/user");
 
 feedbacksRouter.get("/", async (request, response) => {
-  const feedbacks = await Feedback.find({}).populate({
-    path: "comments",
-    populate: { path: "user" },
-  });
+  const feedbacks = await Feedback.find({})
+    .populate({
+      path: "comments",
+      populate: { path: "user" },
+    })
+    .populate("user", { username: 1, name: 1 });
   response.json(feedbacks);
 });
 

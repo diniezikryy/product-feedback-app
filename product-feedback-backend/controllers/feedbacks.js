@@ -3,6 +3,18 @@ const { response } = require("express");
 const Feedback = require("../models/feedback");
 const Comment = require("../models/comment");
 const User = require("../models/user");
+const jwt = require("jsonwebtoken");
+
+/* Useful functions */
+
+// Function to help isolate the token from the authorization header
+const getTokenFrom = (request) => {
+  const authorization = request.get("authorization");
+  if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
+    return authorization.substring(7);
+  }
+  return null;
+};
 
 feedbacksRouter.get("/", async (request, response) => {
   const feedbacks = await Feedback.find({})
@@ -25,9 +37,18 @@ feedbacksRouter.get("/:id", async (request, response) => {
 
 feedbacksRouter.post("/", async (req, res, next) => {
   const body = req.body;
+  const token = getTokenFrom(req);
   console.log(req);
 
-  const user = await User.findById(body.userId);
+  // checks the validity of the token and decodes it, if no token is passed, error 'jwt must be provided'
+  const decodedToken = jwt.verify(token, process.env.SECRET);
+  if (!decodedToken.id) {
+    // will not be returned if token is undefined
+    return response.status(401).json({ error: "token missing or invalid" });
+  }
+
+  // searches user based on user's identity in the token
+  const user = await User.findById(decodedToken.id);
 
   const feedback = new Feedback({
     title: body.title,

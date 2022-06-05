@@ -1,19 +1,55 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
+
+import loginService from "../../services/login";
+import feedbackService from "../../services/feedback";
 
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
 
+import UserContext from "../../UserContext";
+
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { loggedInUser, handleNewLogin } = useContext(UserContext);
+
+  const navigate = useNavigate();
 
   const handleShowPassword = (event) => {
     event.preventDefault();
     setShowPassword(!showPassword);
   };
 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    try {
+      const user = await loginService.login({
+        username,
+        password,
+      });
+      window.localStorage.setItem(
+        "loggedFeedbackAppUser",
+        JSON.stringify(user)
+      );
+      feedbackService.setToken(user.token);
+      handleNewLogin(user);
+      setUsername("");
+      setPassword("");
+      navigate("/");
+    } catch (exception) {
+      console.log(exception);
+    }
+  };
+
   return (
-    <form className="p-6 sm:mx-28 md:max-w-xl md:mx-auto">
+    <form
+      onSubmit={handleLogin}
+      className="p-6 sm:mx-28 md:max-w-xl md:mx-auto"
+    >
       <div className="mt-8">
         <Link to="/">
           <ButtonTertiary buttonText="Go Back" />
@@ -33,6 +69,7 @@ const LoginPage = () => {
             <input
               type="text"
               id="base-input"
+              onChange={({ target }) => setUsername(target.value)}
               className="block w-full p-3 mt-4 text-sm text-gray-900 rounded-lg bg-main-secondary focus:ring-blue-500 focus:border-blue-500"
             ></input>
           </div>
@@ -46,6 +83,7 @@ const LoginPage = () => {
           <div className="relative">
             <input
               type={showPassword === false ? "password" : "text"}
+              onChange={({ target }) => setPassword(target.value)}
               id="base-input"
               className="block w-full p-3 mt-4 text-sm text-gray-900 rounded-lg bg-main-secondary focus:ring-blue-500 focus:border-blue-500"
             ></input>

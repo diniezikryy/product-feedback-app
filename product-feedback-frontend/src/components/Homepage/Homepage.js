@@ -8,6 +8,7 @@ import FeedbackRoadmap from "./FeedbackRoadmap";
 import Slideover from "./Slideover";
 import Alerts from "../Elements/Alerts/Alerts";
 
+import UserContext from "../../UserContext";
 import NotificationContext from "../../NotificationContext";
 
 import feedbackService from "../../services/feedback";
@@ -18,6 +19,16 @@ const Homepage = () => {
   const [showFeedbacks, setShowFeedbacks] = useState(false);
 
   const { message, type } = useContext(NotificationContext);
+  const { loggedInUser, handleNewLogin } = useContext(UserContext);
+
+  useEffect(() => {
+    const loggedUserJson = window.localStorage.getItem("loggedFeedbackAppUser");
+    if (loggedUserJson) {
+      const user = JSON.parse(loggedUserJson);
+      handleNewLogin(user);
+      feedbackService.setToken(user.token);
+    }
+  });
 
   useEffect(() => {
     feedbackService.getAll().then((initialFeedbacks) => {
@@ -54,9 +65,7 @@ const Homepage = () => {
           </div>
         </div>
       </div>
-
       {/* When screen is > 768px (Tablet Screens) */}
-
       <div className="hidden sm:contents lg:hidden">
         <div className="flex flex-row justify-between mb-10">
           <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
@@ -64,23 +73,18 @@ const Homepage = () => {
           <FeedbackRoadmap />
         </div>
       </div>
-
       {/* When screen is < 640px (Mobile Screens) */}
-
       <div className="sm:hidden">
         <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
       </div>
-
       <div className="hidden">
         <FeedbackCategory />
         <FeedbackRoadmap />
       </div>
-
       {/* Slideover */}
       <div className="sm:hidden">
         <Slideover open={open} setOpen={handleSlideoverOpen} />
       </div>
-
       <div className="lg:hidden">
         <FeedbackNavbar feedbackNum={feedbacks.length} />
         <FeedbackList feedbacks={feedbacks} showFeedbacks={showFeedbacks} />

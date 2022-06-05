@@ -213,3 +213,31 @@ https://betterprogramming.pub/a-step-by-step-guide-to-handle-form-validation-in-
 30/05/22
 
 Implemented notification feature for all 4 types of alerts.
+
+04/06/22
+
+Can add a feedback linked to the user, later need to populate
+
+Token Auth Steps
+
+1. Users starts by loggin in using a login form implemented w/ React.
+2. If username & password are correct, the server generates a token which somehow idenitifies the logged in user.
+
+- Token is signed digitally, making it impossible to falsify.
+
+3. The backend responds with a status code indicating the operation was successful, and returns the token with the response.
+4. The browser saves the token, for example, to the state of a React application.
+5. When the user creates a new note (or does some other operation requiring identification), the React code sends the token to the server w/ the request.
+6. The server uses the token to identify the user.
+
+Goals for 05/06/22
+
+1. Ensure that the user is able to login/logout using Postman
+2. Ensure functionality of the login/register form
+3. Only allow logged in user to be able to add a feedback ✅
+4. Only allow logged in user to delete that feedback
+5. Only allow logged in user to upvote & downvote once
+
+use Context to manage User state
+
+scrap the original implementation and redo the login auth...

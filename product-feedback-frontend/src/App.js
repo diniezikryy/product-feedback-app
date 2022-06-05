@@ -6,18 +6,21 @@ import AddFeedbackForm from "./components/AddFeedback/AddFeedbackForm";
 import LoginPage from "./components/Login/LoginPage";
 import RegisterPage from "./components/Login/RegisterPage";
 import { NotificationProvider } from "./NotificationContext";
+import { UserProvider } from "./UserContext";
 
 const App = () => {
   return (
     <div>
-      <NotificationProvider>
-        <Routes>
-          <Route path="/" element={<Homepage />} exact />
-          <Route path="/add-feedback" element={<AddFeedbackForm />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-        </Routes>
-      </NotificationProvider>
+      <UserProvider>
+        <NotificationProvider>
+          <Routes>
+            <Route path="/" element={<Homepage />} exact />
+            <Route path="/add-feedback" element={<AddFeedbackForm />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Routes>
+        </NotificationProvider>
+      </UserProvider>
     </div>
   );
 };

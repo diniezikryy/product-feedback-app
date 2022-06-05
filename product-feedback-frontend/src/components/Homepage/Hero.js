@@ -1,21 +1,30 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import UserContext from "../../UserContext";
 
 const Hero = ({ handleSlideoverOpen, open }) => {
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-main-secondary transition ease transform duration-300`;
 
+  const { loggedInUser, handleNewLogin } = useContext(UserContext);
+
   return (
     <div className="sm:w-56 lg:h-32 sm:h-44 sm:flex-col sm:justify-end sm:items-start sm:rounded-lg relative flex items-center justify-between bg-cover bg-[url('./assets/background-header.png')] px-6 py-4">
       <div className="mb-auto">
-        <Link to="/login">
-          <div>
-            <p
-              className="text-xs font-light text-white underline decoration-solid"
-              href="#"
-            >
-              Log in
-            </p>
-          </div>
-        </Link>
+        {loggedInUser ? (
+          <div>Welcome {loggedInUser.name}</div>
+        ) : (
+          <Link to="/login">
+            <div>
+              <p
+                className="text-xs font-light text-white underline decoration-solid"
+                href="#"
+              >
+                Log in
+              </p>
+            </div>
+          </Link>
+        )}
       </div>
 
       <div className="flex flex-col justify-end">

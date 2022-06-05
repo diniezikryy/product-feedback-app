@@ -36,7 +36,7 @@ feedbacksRouter.get("/:id", async (request, response) => {
 });
 
 feedbacksRouter.post("/", async (req, res, next) => {
-  const body = req.body;
+  const body = req.body.content;
   const token = getTokenFrom(req);
   console.log(req);
 

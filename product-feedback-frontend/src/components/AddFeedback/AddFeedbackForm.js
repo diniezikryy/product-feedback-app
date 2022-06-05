@@ -36,14 +36,13 @@ const AddFeedbackForm = () => {
 
   const addFeedback = (event) => {
     event.preventDefault();
-    const content = {
+    feedbackService.createNewFeedback({
       title: feedbackTitle,
       category: feedbackCategory,
       upvotes: 0,
       status: "suggestion",
       description: feedbackDetail,
-    };
-    feedbackService.createNewFeedback(content);
+    });
     setNewMessage("Successfully added new feedback", "success");
     navigate("/");
   };

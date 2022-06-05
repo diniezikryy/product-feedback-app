@@ -1,6 +1,11 @@
 import axios from "axios";
-
 const baseURL = "http://localhost:3001/api/feedbacks";
+
+let token = null;
+
+const setToken = (newToken) => {
+  token = `bearer ${newToken}`;
+};
 
 const getAll = () => {
   const request = axios.get(baseURL);
@@ -8,9 +13,12 @@ const getAll = () => {
 };
 
 const createNewFeedback = async (content) => {
+  const config = {
+    headers: { Authorization: token },
+  };
   const newFeedbackObject = { content };
-  const response = await axios.post(baseURL, newFeedbackObject);
+  const response = await axios.post(baseURL, newFeedbackObject, config);
   return response.data;
 };
 
-export default { getAll, createNewFeedback };
+export default { getAll, createNewFeedback, setToken };

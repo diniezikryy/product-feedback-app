@@ -1,9 +1,7 @@
-import { Fragment, useState, useContext } from "react";
+import { Fragment } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { ReactComponent as CheckIcon } from "./icon-check.svg";
-
-import FeedbackContext from "../../../contexts/FeedbackContext";
 
 const SortDropdown = ({ sortOption, setSortOption }) => {
   const sortOptions = [
@@ -12,8 +10,6 @@ const SortDropdown = ({ sortOption, setSortOption }) => {
     "Most Comments",
     "Least Comments",
   ];
-
-  console.log("sort dropdown:", sortOption);
 
   return (
     <div className="ml-0 sm:ml-9">

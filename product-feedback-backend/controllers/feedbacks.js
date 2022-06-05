@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 
 /* Useful functions */
 
-// Function to help isolate the token from the authorization header
+// function to help isolate the token from the authorization header
 const getTokenFrom = (request) => {
   const authorization = request.get("authorization");
   if (authorization && authorization.toLowerCase().startsWith("bearer ")) {
@@ -16,6 +16,7 @@ const getTokenFrom = (request) => {
   return null;
 };
 
+// function to get the data of all the feedbacks, which includes the comments + the creator details
 feedbacksRouter.get("/", async (request, response) => {
   const feedbacks = await Feedback.find({})
     .populate({
@@ -26,8 +27,14 @@ feedbacksRouter.get("/", async (request, response) => {
   response.json(feedbacks);
 });
 
+// function to get the individual data of a feedback
 feedbacksRouter.get("/:id", async (request, response) => {
-  const feedback = await Feedback.findById(request.params.id);
+  const feedback = await Feedback.findById(request.params.id)
+    .populate({
+      path: "comments",
+      populate: { path: "user" },
+    })
+    .populate("user", { username: 1, name: 1 });
   if (feedback) {
     response.json(feedback);
   } else {
@@ -35,10 +42,10 @@ feedbacksRouter.get("/:id", async (request, response) => {
   }
 });
 
+// function to add individual feedback to the API only when a user is logged in
 feedbacksRouter.post("/", async (req, res, next) => {
   const body = req.body.content;
   const token = getTokenFrom(req);
-  console.log(req);
 
   // checks the validity of the token and decodes it, if no token is passed, error 'jwt must be provided'
   const decodedToken = jwt.verify(token, process.env.SECRET);

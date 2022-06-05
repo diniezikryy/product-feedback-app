@@ -10,7 +10,6 @@ import Alerts from "../Elements/Alerts/Alerts";
 
 import UserContext from "../../contexts/UserContext";
 import NotificationContext from "../../contexts/NotificationContext";
-import FeedbackContext from "../../contexts/FeedbackContext";
 
 import feedbackService from "../../services/feedback";
 
@@ -48,7 +47,13 @@ const Homepage = () => {
     setOpen(!open);
   };
 
-  console.log("sort option: ", sortOption);
+  const sortedFeedbacks = (feedbacks) => {
+    if (sortOption === "Most Upvotes") {
+      return feedbacks.sort((a, b) => b.upvotes - a.upvotes);
+    } else if (sortOption === "Least Upvotes") {
+      return feedbacks.sort((a, b) => a.upvotes - b.upvotes);
+    }
+  };
 
   return (
     <div className="container p-0 mx-auto sm:mt-14 md:px-9">
@@ -69,7 +74,7 @@ const Homepage = () => {
               setSortOption={setSortOption}
             />
             <FeedbackList
-              feedbacks={feedbacks}
+              feedbacks={sortedFeedbacks(feedbacks)}
               showFeedbacks={showFeedbacks}
               sortOption={sortOption}
             />

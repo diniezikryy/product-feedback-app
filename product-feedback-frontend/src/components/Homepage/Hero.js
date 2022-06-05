@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import UserContext from "../../UserContext";
+import UserContext from "../../contexts/UserContext";
 
 const Hero = ({ handleSlideoverOpen, open }) => {
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-main-secondary transition ease transform duration-300`;

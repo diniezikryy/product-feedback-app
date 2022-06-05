@@ -8,15 +8,17 @@ import FeedbackRoadmap from "./FeedbackRoadmap";
 import Slideover from "./Slideover";
 import Alerts from "../Elements/Alerts/Alerts";
 
-import UserContext from "../../UserContext";
-import NotificationContext from "../../NotificationContext";
+import UserContext from "../../contexts/UserContext";
+import NotificationContext from "../../contexts/NotificationContext";
+import FeedbackContext from "../../contexts/FeedbackContext";
 
 import feedbackService from "../../services/feedback";
 
 const Homepage = () => {
   const [open, setOpen] = useState(false);
-  const [feedbacks, setFeedbacks] = useState([]);
   const [showFeedbacks, setShowFeedbacks] = useState(false);
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [sortOption, setSortOption] = useState("Most Upvotes");
 
   const { message, type } = useContext(NotificationContext);
   const { setLoggedInUser } = useContext(UserContext);
@@ -32,7 +34,7 @@ const Homepage = () => {
 
   useEffect(() => {
     feedbackService.getAll().then((initialFeedbacks) => {
-      setFeedbacks(initialFeedbacks);
+      setFeedbacks(initialFeedbacks.sort((a, b) => b.upvotes - a.upvotes));
     });
   }, []);
 
@@ -44,8 +46,9 @@ const Homepage = () => {
 
   const handleSlideoverOpen = () => {
     setOpen(!open);
-    console.log(open);
   };
+
+  console.log("sort option: ", sortOption);
 
   return (
     <div className="container p-0 mx-auto sm:mt-14 md:px-9">
@@ -60,8 +63,16 @@ const Homepage = () => {
           </div>
 
           <div className="flex flex-col w-full">
-            <FeedbackNavbar feedbackNum={feedbacks.length} />
-            <FeedbackList feedbacks={feedbacks} showFeedbacks={showFeedbacks} />
+            <FeedbackNavbar
+              feedbackNum={feedbacks.length}
+              sortOption={sortOption}
+              setSortOption={setSortOption}
+            />
+            <FeedbackList
+              feedbacks={feedbacks}
+              showFeedbacks={showFeedbacks}
+              sortOption={sortOption}
+            />
           </div>
         </div>
       </div>

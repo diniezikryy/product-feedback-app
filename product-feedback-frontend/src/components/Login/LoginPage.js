@@ -7,7 +7,7 @@ import feedbackService from "../../services/feedback";
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
 
-import UserContext from "../../UserContext";
+import UserContext from "../../contexts/UserContext";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);

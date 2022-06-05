@@ -230,14 +230,29 @@ Token Auth Steps
 5. When the user creates a new note (or does some other operation requiring identification), the React code sends the token to the server w/ the request.
 6. The server uses the token to identify the user.
 
+05/06/22
+
 Goals for 05/06/22
 
-1. Ensure that the user is able to login/logout using Postman
-2. Ensure functionality of the login/register form
+1. Ensure that the user is able to login/logout using Postman ✅
+2. Ensure functionality of the login form ✅
 3. Only allow logged in user to be able to add a feedback ✅
 4. Only allow logged in user to delete that feedback
 5. Only allow logged in user to upvote & downvote once
 
 use Context to manage User state
 
-scrap the original implementation and redo the login auth...
+Current Issues that needs to be settled
+
+- Homepage
+
+  - The sorting dropdown needs to be functional
+  - There needs to be a place for the user to be able to see his login/logout text
+  - The register page is not working
+
+- Login/Register Page
+
+  - The login pages are not routing this correctly
+
+- Notifications
+  - Notification code is not written yet, so user does not know whether they have successfully logged in or not.

@@ -9,7 +9,7 @@ import LabelledTextArea from "../Elements/Forms/LabelledTextArea";
 
 import { ReactComponent as NewFeedbackIcon } from "./icon-new-feedback.svg";
 
-import NotificationContext from "../../NotificationContext";
+import NotificationContext from "../../contexts/NotificationContext";
 
 import feedbackService from "../../services/feedback";
 

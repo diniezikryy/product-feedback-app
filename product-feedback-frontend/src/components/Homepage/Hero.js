@@ -6,13 +6,18 @@ import UserContext from "../../UserContext";
 const Hero = ({ handleSlideoverOpen, open }) => {
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-main-secondary transition ease transform duration-300`;
 
-  const { loggedInUser, handleNewLogin } = useContext(UserContext);
+  const { loggedInUser, handleLogout } = useContext(UserContext);
 
   return (
     <div className="sm:w-56 lg:h-32 sm:h-44 sm:flex-col sm:justify-end sm:items-start sm:rounded-lg relative flex items-center justify-between bg-cover bg-[url('./assets/background-header.png')] px-6 py-4">
       <div className="mb-auto">
         {loggedInUser ? (
-          <div>Welcome {loggedInUser.name}</div>
+          <div>
+            Welcome {loggedInUser.name}
+            <button className="ml-2" onClick={handleLogout}>
+              Logout
+            </button>
+          </div>
         ) : (
           <Link to="/login">
             <div>

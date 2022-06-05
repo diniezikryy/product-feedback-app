@@ -5,12 +5,16 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [loggedInUser, setLoggedInUser] = useState(null);
 
-  const handleNewLogin = (newUser) => {
-    setLoggedInUser(newUser);
+  const handleLogout = async (event) => {
+    event.preventDefault();
+    window.localStorage.clear();
+    setLoggedInUser(null);
   };
 
   return (
-    <UserContext.Provider value={{ loggedInUser, handleNewLogin }}>
+    <UserContext.Provider
+      value={{ loggedInUser, setLoggedInUser, handleLogout }}
+    >
       {children}
     </UserContext.Provider>
   );

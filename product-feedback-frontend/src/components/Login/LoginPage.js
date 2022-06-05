@@ -14,7 +14,7 @@ const LoginPage = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { loggedInUser, handleNewLogin } = useContext(UserContext);
+  const { setLoggedInUser } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -36,7 +36,7 @@ const LoginPage = () => {
         JSON.stringify(user)
       );
       feedbackService.setToken(user.token);
-      handleNewLogin(user);
+      setLoggedInUser(user);
       setUsername("");
       setPassword("");
       navigate("/");
@@ -68,7 +68,6 @@ const LoginPage = () => {
           <div className="relative">
             <input
               type="text"
-              id="base-input"
               onChange={({ target }) => setUsername(target.value)}
               className="block w-full p-3 mt-4 text-sm text-gray-900 rounded-lg bg-main-secondary focus:ring-blue-500 focus:border-blue-500"
             ></input>
@@ -84,7 +83,6 @@ const LoginPage = () => {
             <input
               type={showPassword === false ? "password" : "text"}
               onChange={({ target }) => setPassword(target.value)}
-              id="base-input"
               className="block w-full p-3 mt-4 text-sm text-gray-900 rounded-lg bg-main-secondary focus:ring-blue-500 focus:border-blue-500"
             ></input>
             <button

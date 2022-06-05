@@ -19,16 +19,16 @@ const Homepage = () => {
   const [showFeedbacks, setShowFeedbacks] = useState(false);
 
   const { message, type } = useContext(NotificationContext);
-  const { loggedInUser, handleNewLogin } = useContext(UserContext);
+  const { setLoggedInUser } = useContext(UserContext);
 
   useEffect(() => {
     const loggedUserJson = window.localStorage.getItem("loggedFeedbackAppUser");
     if (loggedUserJson) {
       const user = JSON.parse(loggedUserJson);
-      handleNewLogin(user);
+      setLoggedInUser(user);
       feedbackService.setToken(user.token);
     }
-  });
+  }, []);
 
   useEffect(() => {
     feedbackService.getAll().then((initialFeedbacks) => {

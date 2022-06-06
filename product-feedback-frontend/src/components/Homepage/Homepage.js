@@ -47,11 +47,19 @@ const Homepage = () => {
     setOpen(!open);
   };
 
+  const updateSortOption = (sort) => {
+    setSortOption(sort);
+  };
+
   const sortedFeedbacks = (feedbacks) => {
     if (sortOption === "Most Upvotes") {
       return feedbacks.sort((a, b) => b.upvotes - a.upvotes);
     } else if (sortOption === "Least Upvotes") {
       return feedbacks.sort((a, b) => a.upvotes - b.upvotes);
+    } else if (sortOption === "Most Comments") {
+      return feedbacks.sort((a, b) => b.comments.length - a.comments.length);
+    } else if (sortOption === "Least Comments") {
+      return feedbacks.sort((a, b) => a.comments.length - b.comments.length);
     }
   };
 
@@ -71,7 +79,7 @@ const Homepage = () => {
             <FeedbackNavbar
               feedbackNum={feedbacks.length}
               sortOption={sortOption}
-              setSortOption={setSortOption}
+              updateSortOption={updateSortOption}
             />
             <FeedbackList
               feedbacks={sortedFeedbacks(feedbacks)}
@@ -102,7 +110,11 @@ const Homepage = () => {
         <Slideover open={open} setOpen={handleSlideoverOpen} />
       </div>
       <div className="lg:hidden">
-        <FeedbackNavbar feedbackNum={feedbacks.length} />
+        <FeedbackNavbar
+          feedbackNum={feedbacks.length}
+          sortOption={sortOption}
+          updateSortOption={updateSortOption}
+        />
         <FeedbackList feedbacks={feedbacks} showFeedbacks={showFeedbacks} />
       </div>
     </div>

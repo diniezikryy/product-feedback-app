@@ -4,7 +4,7 @@ import ButtonPrimary from "../../Elements/Buttons/ButtonPrimary";
 import SortDropdown from "./SortDropdown";
 import { ReactComponent as Lightbulb } from "./icon-suggestions.svg";
 
-const FeedbackNavbar = ({ feedbackNum, sortOption, setSortOption }) => {
+const FeedbackNavbar = ({ feedbackNum, sortOption, updateSortOption }) => {
   return (
     <div className="mb-6">
       <div className="flex items-center px-6 py-2 bg-navy-primary sm:rounded-lg">
@@ -16,7 +16,10 @@ const FeedbackNavbar = ({ feedbackNum, sortOption, setSortOption }) => {
             </p>
           </div>
         </div>
-        <SortDropdown setSortOption={setSortOption} sortOption={sortOption} />
+        <SortDropdown
+          updateSortOption={updateSortOption}
+          sortOption={sortOption}
+        />
         <div className="ml-auto">
           <Link to="/add-feedback">
             <ButtonPrimary text="+ Add Feedback" />

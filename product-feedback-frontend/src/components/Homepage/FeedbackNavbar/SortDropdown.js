@@ -1,19 +1,26 @@
-import { Fragment } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Listbox, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { ReactComponent as CheckIcon } from "./icon-check.svg";
 
-const SortDropdown = ({ sortOption, setSortOption }) => {
+const SortDropdown = ({ sortOption, updateSortOption }) => {
   const sortOptions = [
     "Most Upvotes",
     "Least Upvotes",
     "Most Comments",
     "Least Comments",
   ];
+  const [selected, setSelected] = useState(sortOptions[0]);
 
   return (
     <div className="ml-0 sm:ml-9">
-      <Listbox value={sortOption} onChange={setSortOption}>
+      <Listbox
+        value={selected}
+        onChange={(event) => {
+          setSelected(event);
+          updateSortOption(selected);
+        }}
+      >
         <div className="relative">
           <Listbox.Button className="relative w-full text-left cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-orange-300 focus-visible:ring-offset-2 focus-visible:border-indigo-500 sm:text-sm">
             <span className="flex items-center">
@@ -21,7 +28,7 @@ const SortDropdown = ({ sortOption, setSortOption }) => {
                 Sort by :{" "}
               </span>
               <span className="ml-1.5 text-sm font-semibold text-slate-300">
-                {sortOption}
+                {selected}
               </span>
               <ChevronDownIcon
                 className="w-5 h-5 -mr-1 text-slate-300"

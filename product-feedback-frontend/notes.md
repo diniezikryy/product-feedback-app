@@ -247,6 +247,7 @@ Current Issues that needs to be settled
 - Homepage
 
   - The sorting dropdown needs to be functional ✅
+  - The Category box needs to be functional
   - There needs to be a place for the user to be able to see his login/logout text
   - The register page is not working
 

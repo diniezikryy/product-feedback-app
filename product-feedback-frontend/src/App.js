@@ -9,13 +9,21 @@ import RegisterPage from "./components/Login/RegisterPage";
 import { NotificationProvider } from "./contexts/NotificationContext";
 import { UserProvider } from "./contexts/UserContext";
 
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 const App = () => {
   return (
     <div>
       <UserProvider>
         <NotificationProvider>
           <Routes>
-            <Route path="/" element={<Homepage />} exact />
+            <Route
+              path="/"
+              element={<Homepage key={getRandomInt(69)} />}
+              exact
+            />
             <Route path="/add-feedback" element={<AddFeedbackForm />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />

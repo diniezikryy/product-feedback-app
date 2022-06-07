@@ -18,6 +18,7 @@ const Homepage = () => {
   const [showFeedbacks, setShowFeedbacks] = useState(false);
   const [feedbacks, setFeedbacks] = useState([]);
   const [sortOption, setSortOption] = useState("Most Upvotes");
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   const { message, type } = useContext(NotificationContext);
   const { setLoggedInUser } = useContext(UserContext);
@@ -93,7 +94,10 @@ const Homepage = () => {
       <div className="hidden sm:contents lg:hidden">
         <div className="flex flex-row justify-between mb-10">
           <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
-          <FeedbackCategory />
+          <FeedbackCategory
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+          />
           <FeedbackRoadmap />
         </div>
       </div>

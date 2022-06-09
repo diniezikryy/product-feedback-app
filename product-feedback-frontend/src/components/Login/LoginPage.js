@@ -6,8 +6,10 @@ import feedbackService from "../../services/feedback";
 
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
+import Alerts from "../Elements/Alerts/Alerts";
 
 import UserContext from "../../contexts/UserContext";
+import NotificationContext from "../../contexts/NotificationContext";
 
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +17,7 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
 
   const { setLoggedInUser } = useContext(UserContext);
+  const { message, type, setNewMessage } = useContext(NotificationContext);
 
   const navigate = useNavigate();
 
@@ -40,6 +43,7 @@ const LoginPage = () => {
       setUsername("");
       setPassword("");
       navigate("/");
+      setNewMessage("Successfully logged in!", "success");
     } catch (exception) {
       console.log(exception);
     }
@@ -50,6 +54,7 @@ const LoginPage = () => {
       onSubmit={handleLogin}
       className="p-6 sm:mx-28 md:max-w-xl md:mx-auto"
     >
+      <Alerts type={type} message={message} />
       <div className="mt-8">
         <Link to="/">
           <ButtonTertiary buttonText="Go Back" />

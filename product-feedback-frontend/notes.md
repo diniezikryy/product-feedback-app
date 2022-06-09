@@ -257,3 +257,9 @@ Current Issues that needs to be settled
 
 - Notifications
   - Notification code is not written yet, so user does not know whether they have successfully logged in or not.
+
+09/06/22
+
+- The redirect from add feedback page is working, but like 80% of the time, which isnt that bad.
+- There is no notification for successfully logging in/logging out.
+- There is no form validation for the logging in/register page.

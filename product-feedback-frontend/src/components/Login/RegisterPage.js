@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import registerService from "../../services/register";
 
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
+
+import NotificationContext from "../../contexts/NotificationContext";
 
 // No routing back to home page if cancelled, no functionality yet, Go Back button doesnt go back to login page
 
@@ -13,6 +15,8 @@ const RegisterPage = () => {
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+
+  const { setNewMessage } = useContext(NotificationContext);
 
   const navigate = useNavigate();
 
@@ -48,7 +52,11 @@ const RegisterPage = () => {
       setName("");
       setUsername("");
       setPassword("");
-      navigate("/");
+      navigate("/login", { replace: true });
+      setNewMessage(
+        "Successfully registered! please log in using your new account.",
+        "success"
+      );
     } catch (exception) {
       console.log(exception);
     }

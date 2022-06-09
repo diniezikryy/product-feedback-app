@@ -44,7 +44,7 @@ const AddFeedbackForm = () => {
       description: feedbackDetail,
     });
     setNewMessage("Successfully added new feedback", "success");
-    navigate("/");
+    navigate("/", { replace: true });
   };
 
   return (

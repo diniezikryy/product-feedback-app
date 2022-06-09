@@ -13,7 +13,7 @@ import NotificationContext from "../../contexts/NotificationContext";
 
 import feedbackService from "../../services/feedback";
 
-const Homepage = () => {
+const Homepage = (props) => {
   const [open, setOpen] = useState(false);
   const [showFeedbacks, setShowFeedbacks] = useState(false);
   const [feedbacks, setFeedbacks] = useState([]);

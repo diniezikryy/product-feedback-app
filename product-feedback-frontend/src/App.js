@@ -19,11 +19,7 @@ const App = () => {
       <UserProvider>
         <NotificationProvider>
           <Routes>
-            <Route
-              path="/"
-              element={<Homepage key={getRandomInt(69)} />}
-              exact
-            />
+            <Route path="/" element={<Homepage key="hello world" />} exact />
             <Route path="/add-feedback" element={<AddFeedbackForm />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />

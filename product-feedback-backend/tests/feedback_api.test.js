@@ -26,11 +26,6 @@ const initialFeedbacks = [
     upvotes: 112,
     status: "suggestion",
     description: "Easier to search for solutions based on a specific stack.",
-    /* user: {
-      image: "something",
-      name: "Suzanne Chang",
-      username: "upbeat1811",
-    }, */
     comments: [],
   },
 ];

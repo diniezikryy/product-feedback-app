@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 import CategoryButton from "../../Elements/CategoryButton";
 import { ReactComponent as ArrowUp } from "./icon-arrow-up.svg";
 import { ReactComponent as CommentsIcon } from "./icon-comments.svg";
@@ -11,9 +13,11 @@ const FeedbackCard = ({ feedback }) => {
       </div>
 
       <div>
-        <h2 className="mb-2 text-sm font-bold text-navy-primary">
-          {feedback.title}
-        </h2>
+        <Link>
+          <h2 className="mb-2 text-sm font-bold text-navy-primary">
+            {feedback.title}
+          </h2>
+        </Link>
         <p className="mb-2 text-sm font-base text-navy-tertiary">
           {feedback.description}
         </p>

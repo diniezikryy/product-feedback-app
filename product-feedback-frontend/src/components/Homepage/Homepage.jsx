@@ -4,7 +4,6 @@ import Hero from "./Hero";
 import FeedbackNavbar from "./FeedbackNavbar/FeedbackNavbar";
 import FeedbackCategory from "./FeedbackCategory";
 import FeedbackList from "./FeedbackList/FeedbackList";
-import FeedbackRoadmap from "./FeedbackRoadmap";
 import Slideover from "./Slideover";
 import Alerts from "../Elements/Alerts/Alerts";
 
@@ -66,7 +65,6 @@ const Homepage = ({ feedbacks }) => {
           <div className="flex flex-col gap-y-6">
             <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
             <FeedbackCategory />
-            <FeedbackRoadmap />
           </div>
 
           <div className="flex flex-col w-full">
@@ -91,7 +89,6 @@ const Homepage = ({ feedbacks }) => {
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />
-          <FeedbackRoadmap />
         </div>
       </div>
       {/* When screen is < 640px (Mobile Screens) */}
@@ -100,7 +97,6 @@ const Homepage = ({ feedbacks }) => {
       </div>
       <div className="hidden">
         <FeedbackCategory />
-        <FeedbackRoadmap />
       </div>
       {/* Slideover */}
       <div className="sm:hidden">
@@ -119,5 +115,3 @@ const Homepage = ({ feedbacks }) => {
 };
 
 export default Homepage;
-
-// How to center a div?

@@ -12,11 +12,18 @@ import NotificationContext from "../../contexts/NotificationContext";
 
 import feedbackService from "../../services/feedback";
 
-const Homepage = ({ feedbacks }) => {
+const Homepage = () => {
   const [open, setOpen] = useState(false);
   const [showFeedbacks, setShowFeedbacks] = useState(false);
   const [sortOption, setSortOption] = useState("Most Upvotes");
   const [selectedCategory, setSelectedCategory] = useState("All");
+  const [feedbacks, setFeedbacks] = useState([]);
+
+  useEffect(() => {
+    feedbackService.getAll().then((initialFeedbacks) => {
+      setFeedbacks(initialFeedbacks.sort((a, b) => b.upvotes - a.upvotes));
+    });
+  }, []);
 
   const { message, type } = useContext(NotificationContext);
   const { setLoggedInUser } = useContext(UserContext);

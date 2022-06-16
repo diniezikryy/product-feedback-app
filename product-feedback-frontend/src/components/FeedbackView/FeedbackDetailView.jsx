@@ -15,10 +15,10 @@ const FeedbackDetailView = () => {
   const [isLoading, setLoading] = useState(true);
   const [comments, setComments] = useState([]);
   const [commentContent, setCommentContent] = useState("");
+  const [user, setUser] = useState("");
+  const [showDelete, setShowDelete] = useState(false);
 
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
-
-  console.log(loggedInUser);
 
   const id = useParams().id.slice(0, -1);
 
@@ -27,18 +27,21 @@ const FeedbackDetailView = () => {
       setFeedback(initalFeedbacks.find((feedback) => feedback.id === id));
       const feedback = initalFeedbacks.find((feedback) => feedback.id === id);
       setComments(feedback.comments);
-      console.log(feedback.comments);
+      setUser(feedback.user.username);
       setLoading(false);
     });
   }, []);
 
   useEffect(() => {
     const loggedUserJson = window.localStorage.getItem("loggedFeedbackAppUser");
-    console.log(loggedUserJson);
     if (loggedUserJson) {
       const user = JSON.parse(loggedUserJson);
-      setLoggedInUser(user);
+      setLoggedInUser(user.username);
       commentService.setToken(user.token);
+    }
+
+    if (loggedInUser === user) {
+      setShowDelete(true);
     }
   }, []);
 
@@ -62,6 +65,7 @@ const FeedbackDetailView = () => {
 
     commentService.createNewComment(newComment);
     setComments(comments.concat(newComment));
+    console.log(comments);
   };
 
   if (isLoading) {
@@ -94,6 +98,12 @@ const FeedbackDetailView = () => {
           <Link to="/">
             <ButtonTertiary buttonText="Go Back" />
           </Link>
+
+          {loggedInUser === user && (
+            <button onClick={() => console.log("feedback edited")}>
+              Edit Feedback
+            </button>
+          )}
         </div>
 
         <FeedbackDetail feedback={feedback} />

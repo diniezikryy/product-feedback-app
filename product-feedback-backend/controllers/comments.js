@@ -28,6 +28,7 @@ commentsRouter.post("/", async (request, response, next) => {
   const token = getTokenFrom(request);
 
   const decodedToken = jwt.verify(token, process.env.SECRET);
+
   if (!decodedToken.id) {
     return response.status(401).json({ error: "token missing or invalid" });
   }

@@ -253,7 +253,7 @@ Current Issues that needs to be settled
 
 - Login/Register Page
 
-  - The login pages are not routing this correctly
+  - The login pages are not routing this correctly ✅
 
 - Notifications
   - Notification code is not written yet, so user does not know whether they have successfully logged in or not.
@@ -263,3 +263,18 @@ Current Issues that needs to be settled
 - The redirect from add feedback page is working, but like 80% of the time, which isnt that bad.
 - There is no notification for successfully logging in/logging out.
 - There is no form validation for the logging in/register page.
+
+16/06/22
+
+- Only the user should be able to edit or delete their own feedbacks ✅
+
+  1. The userId of the post must matched the currently logged in user
+  2. Once matched, the edit feedback button must be displayed to them
+  3. feedbackService must have an update & delete function
+
+- Making the edit feedback form work
+  1. Writing the backend logic for the deletion/update to work (Works in postman)
+
+Bugs to be fixed
+
+- Comment content being rendered but the user & username are not

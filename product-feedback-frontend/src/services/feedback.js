@@ -21,4 +21,18 @@ const createNewFeedback = async (content) => {
   return response.data;
 };
 
-export default { getAll, createNewFeedback, setToken };
+const editFeedback = async (content) => {
+  console.log(content);
+  const config = {
+    headers: { Authorization: token },
+  };
+  const updatedFeedbackObject = content;
+  const response = await axios.put(
+    `${baseURL}/${updatedFeedbackObject.id}`,
+    updatedFeedbackObject,
+    config
+  );
+  return response.data;
+};
+
+export default { editFeedback, getAll, createNewFeedback, setToken };

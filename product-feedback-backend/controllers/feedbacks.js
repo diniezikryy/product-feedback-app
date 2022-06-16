@@ -77,4 +77,33 @@ feedbacksRouter.post("/", async (req, res, next) => {
   }
 });
 
+// function to delete the feedback
+feedbacksRouter.delete("/:id", async (request, response) => {
+  await Feedback.findByIdAndRemove(request.params.id);
+  response.status(204).end();
+});
+
+// function to update the feedback
+feedbacksRouter.put("/:id", async (request, response, next) => {
+  console.log("request.body", request.body);
+  //const body = request.body;
+  console.log("request.params", request);
+
+  const updatedFeedback = {
+    title: request.body.title,
+    category: request.body.category,
+    upvotes: request.body.upvotes,
+    status: request.body.status,
+    description: request.body.description,
+    user: request.body.user,
+    comments: request.body.comments,
+  };
+
+  Feedback.findByIdAndUpdate(request.params.id, updatedFeedback, { new: true })
+    .then((updatedFeedback) => {
+      response.json(updatedFeedback);
+    })
+    .catch((error) => next(error));
+});
+
 module.exports = feedbacksRouter;

@@ -1,4 +1,9 @@
-const LabelledTextArea = ({ label, description, handleChange }) => {
+const LabelledTextArea = ({
+  label,
+  description,
+  handleChange,
+  placeholder,
+}) => {
   return (
     <div className="mt-6">
       <h2 className="text-sm font-bold text-navy-primary">{label}</h2>
@@ -6,6 +11,7 @@ const LabelledTextArea = ({ label, description, handleChange }) => {
       <textarea
         className="mt-4 bg-main-secondary text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-24 p-2.5"
         onChange={handleChange}
+        placeholder={placeholder}
       ></textarea>
     </div>
   );

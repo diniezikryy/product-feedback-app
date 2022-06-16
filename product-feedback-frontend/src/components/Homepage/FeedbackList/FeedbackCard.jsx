@@ -13,7 +13,7 @@ const FeedbackCard = ({ feedback }) => {
       </div>
 
       <div>
-        <Link to={`/feedbacks/${feedback.id}s`}>
+        <Link to={`/feedbacks/${feedback.id}`}>
           <h2 className="mb-2 text-sm font-bold text-navy-primary">
             {feedback.title}
           </h2>

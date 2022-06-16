@@ -25,11 +25,9 @@ const EditFeedbackForm = () => {
 
   useEffect(() => {
     feedbackService.getAll().then((initalFeedbacks) => {
-      console.log(initalFeedbacks);
-      console.log(id);
       setFeedback(initalFeedbacks.find((feedback) => feedback.id === id));
       const feedback = initalFeedbacks.find((feedback) => feedback.id === id);
-      setUserId(feedback.user.id);
+      setUserId(feedback.user);
       setFeedbackTitle(feedback.title);
       setFeedbackCategory(feedback.category);
       setFeedbackUpvotes(feedback.upvotes);
@@ -56,16 +54,18 @@ const EditFeedbackForm = () => {
   const editFeedback = (event) => {
     event.preventDefault();
 
+    console.log("feedback: ", feedback);
+
     const editedFeedback = {
-      title: feedbackTitle,
+      ...feedback,
       category: feedbackCategory,
-      upvotes: feedbackUpvotes,
-      status: "suggestion",
+      title: feedbackTitle,
       description: feedbackDetail,
-      userId: userId,
-      comments: feedbackComments,
-      id: feedback.id,
+      user: feedback.user.id,
     };
+
+    console.log("editedFeedback: ", editedFeedback);
+
     feedbackService.editFeedback(editedFeedback);
   };
 
@@ -154,7 +154,7 @@ const EditFeedbackForm = () => {
                 type="submit"
                 className="px-6 py-3 text-sm font-semibold leading-5 text-center text-white rounded-lg cursor-pointer text-b bg-fuchsia-600 hover:bg-fuchsia-400"
               >
-                Add Feedback
+                Edit Feedback
               </button>
             </div>
           </div>

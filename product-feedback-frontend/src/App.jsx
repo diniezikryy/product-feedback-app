@@ -22,8 +22,8 @@ const App = () => {
               <Route path="/add-feedback" element={<AddFeedbackForm />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/register" element={<RegisterPage />} />
-              <Route path="/feedbacks/:id" element={<FeedbackDetailView />} />
               <Route path="/edit-feedback/:id" element={<EditFeedbackForm />} />
+              <Route path="/feedbacks/:id" element={<FeedbackDetailView />} />
             </Routes>
           </NotificationProvider>
         </UserProvider>

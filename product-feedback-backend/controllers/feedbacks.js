@@ -85,19 +85,19 @@ feedbacksRouter.delete("/:id", async (request, response) => {
 
 // function to update the feedback
 feedbacksRouter.put("/:id", async (request, response, next) => {
-  console.log("request.body", request.body);
-  //const body = request.body;
-  console.log("request.params", request);
+  const body = request.body;
+
+  console.log(body.comments.map((comment) => comment.id));
 
   const updatedFeedback = {
-    title: request.body.title,
-    category: request.body.category,
-    upvotes: request.body.upvotes,
-    status: request.body.status,
-    description: request.body.description,
-    user: request.body.user,
-    comments: request.body.comments,
+    ...body,
+    title: body.title,
+    category: body.category,
+    description: body.description,
+    comments: body.comments.map((comment) => comment.id),
   };
+
+  console.log("updated feedback: ", updatedFeedback);
 
   Feedback.findByIdAndUpdate(request.params.id, updatedFeedback, { new: true })
     .then((updatedFeedback) => {

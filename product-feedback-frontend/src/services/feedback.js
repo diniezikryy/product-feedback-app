@@ -22,7 +22,6 @@ const createNewFeedback = async (content) => {
 };
 
 const editFeedback = async (content) => {
-  console.log(content);
   const config = {
     headers: { Authorization: token },
   };

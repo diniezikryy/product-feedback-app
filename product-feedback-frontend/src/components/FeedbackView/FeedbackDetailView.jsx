@@ -20,7 +20,7 @@ const FeedbackDetailView = () => {
 
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
 
-  const id = useParams().id.slice(0, -1);
+  const id = useParams().id;
 
   useEffect(() => {
     feedbackService.getAll().then((initalFeedbacks) => {
@@ -65,7 +65,6 @@ const FeedbackDetailView = () => {
 
     commentService.createNewComment(newComment);
     setComments(comments.concat(newComment));
-    console.log(comments);
   };
 
   if (isLoading) {
@@ -94,16 +93,22 @@ const FeedbackDetailView = () => {
   } else {
     return (
       <div className="p-6 sm:mx-28 md:max-w-xl md:mx-auto">
-        <div className="mt-8">
-          <Link to="/">
-            <ButtonTertiary buttonText="Go Back" />
-          </Link>
+        <div className="flex items-center justify-between mt-8">
+          <div>
+            <Link to="/">
+              <ButtonTertiary buttonText="Go Back" />
+            </Link>
+          </div>
 
-          {loggedInUser === user && (
-            <button onClick={() => console.log("feedback edited")}>
-              Edit Feedback
-            </button>
-          )}
+          <div>
+            {loggedInUser === user && (
+              <Link to={`/edit-feedback/${feedback.id}`}>
+                <button className="w-full px-6 py-3 text-sm font-semibold leading-5 text-center text-white rounded-lg cursor-pointer text-b bg-fuchsia-600 hover:bg-fuchsia-400">
+                  Edit Feedback
+                </button>
+              </Link>
+            )}
+          </div>
         </div>
 
         <FeedbackDetail feedback={feedback} />

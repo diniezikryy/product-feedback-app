@@ -8,21 +8,24 @@ import FeedbackDetailView from "./components/FeedbackView/FeedbackDetailView";
 
 import { NotificationProvider } from "./contexts/NotificationContext";
 import { UserProvider } from "./contexts/UserContext";
+import { FeedbackProvider } from "./contexts/FeedbackContext";
 
 const App = () => {
   return (
     <div>
-      <UserProvider>
-        <NotificationProvider>
-          <Routes>
-            <Route path="/" element={<Homepage />} exact />
-            <Route path="/add-feedback" element={<AddFeedbackForm />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path="/feedbacks/:id" element={<FeedbackDetailView />} />
-          </Routes>
-        </NotificationProvider>
-      </UserProvider>
+      <FeedbackProvider>
+        <UserProvider>
+          <NotificationProvider>
+            <Routes>
+              <Route path="/" element={<Homepage />} exact />
+              <Route path="/add-feedback" element={<AddFeedbackForm />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/feedbacks/:id" element={<FeedbackDetailView />} />
+            </Routes>
+          </NotificationProvider>
+        </UserProvider>
+      </FeedbackProvider>
     </div>
   );
 };

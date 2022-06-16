@@ -7,24 +7,21 @@ import FeedbackList from "./FeedbackList/FeedbackList";
 import Slideover from "./Slideover";
 import Alerts from "../Elements/Alerts/Alerts";
 
+import feedbackService from "../../services/feedback";
+
 import UserContext from "../../contexts/UserContext";
 import NotificationContext from "../../contexts/NotificationContext";
-
-import feedbackService from "../../services/feedback";
+import FeedbackContext from "../../contexts/FeedbackContext";
 
 const Homepage = () => {
   const [open, setOpen] = useState(false);
   const [showFeedbacks, setShowFeedbacks] = useState(false);
   const [sortOption, setSortOption] = useState("Most Upvotes");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [feedbacks, setFeedbacks] = useState([]);
+  const [isLoading, setLoading] = useState(false);
+  //const [feedbacks, setFeedbacks] = useState([]);
 
-  useEffect(() => {
-    feedbackService.getAll().then((initialFeedbacks) => {
-      setFeedbacks(initialFeedbacks.sort((a, b) => b.upvotes - a.upvotes));
-    });
-  }, []);
-
+  const { feedbacks, setFeedbacks } = useContext(FeedbackContext);
   const { message, type } = useContext(NotificationContext);
   const { setLoggedInUser } = useContext(UserContext);
 

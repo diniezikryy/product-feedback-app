@@ -10,6 +10,7 @@ import LabelledTextArea from "../Elements/Forms/LabelledTextArea";
 import { ReactComponent as NewFeedbackIcon } from "./icon-new-feedback.svg";
 
 import NotificationContext from "../../contexts/NotificationContext";
+import FeedbackContext from "../../contexts/FeedbackContext";
 
 import feedbackService from "../../services/feedback";
 
@@ -19,6 +20,7 @@ const AddFeedbackForm = () => {
   const [feedbackDetail, setFeedbackDetail] = useState("");
 
   const { setNewMessage } = useContext(NotificationContext);
+  const { feedbacks, setFeedbacks } = useContext(FeedbackContext);
 
   const navigate = useNavigate();
 
@@ -36,13 +38,17 @@ const AddFeedbackForm = () => {
 
   const addFeedback = (event) => {
     event.preventDefault();
-    feedbackService.createNewFeedback({
+    const newFeedback = {
       title: feedbackTitle,
       category: feedbackCategory,
       upvotes: 0,
       status: "suggestion",
       description: feedbackDetail,
-    });
+      comments: [],
+    };
+    feedbackService.createNewFeedback(newFeedback);
+    setFeedbacks(feedbacks.concat(newFeedback));
+    console.log(feedbacks);
     setNewMessage("Successfully added new feedback", "success");
     navigate("/", { replace: true });
   };

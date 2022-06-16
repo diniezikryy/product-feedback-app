@@ -1,7 +1,6 @@
 const feedbacksRouter = require("express").Router();
 const { response } = require("express");
 const Feedback = require("../models/feedback");
-const Comment = require("../models/comment");
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 

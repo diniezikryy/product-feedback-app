@@ -18,10 +18,8 @@ const Homepage = () => {
   const [showFeedbacks, setShowFeedbacks] = useState(false);
   const [sortOption, setSortOption] = useState("Most Upvotes");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [isLoading, setLoading] = useState(false);
-  //const [feedbacks, setFeedbacks] = useState([]);
 
-  const { feedbacks, setFeedbacks } = useContext(FeedbackContext);
+  const { feedbacks } = useContext(FeedbackContext);
   const { message, type } = useContext(NotificationContext);
   const { setLoggedInUser } = useContext(UserContext);
 

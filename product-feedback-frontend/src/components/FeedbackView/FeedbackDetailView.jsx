@@ -6,18 +6,63 @@ import FeedbackDetail from "../FeedbackView/FeedbackDetail";
 import FeedbackDetailComment from "./FeedbackDetailComment";
 
 import feedbackService from "../../services/feedback";
+import commentService from "../../services/comment";
+
+import UserContext from "../../contexts/UserContext";
 
 const FeedbackDetailView = () => {
   const [feedback, setFeedback] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const [comments, setComments] = useState([]);
+  const [commentContent, setCommentContent] = useState("");
+
+  const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+
+  console.log(loggedInUser);
 
   const id = useParams().id.slice(0, -1);
+
   useEffect(() => {
     feedbackService.getAll().then((initalFeedbacks) => {
       setFeedback(initalFeedbacks.find((feedback) => feedback.id === id));
+      const feedback = initalFeedbacks.find((feedback) => feedback.id === id);
+      setComments(feedback.comments);
+      console.log(feedback.comments);
       setLoading(false);
     });
   }, []);
+
+  useEffect(() => {
+    const loggedUserJson = window.localStorage.getItem("loggedFeedbackAppUser");
+    console.log(loggedUserJson);
+    if (loggedUserJson) {
+      const user = JSON.parse(loggedUserJson);
+      setLoggedInUser(user);
+      commentService.setToken(user.token);
+    }
+  }, []);
+
+  const handleCommentChange = (event) => {
+    event.preventDefault();
+    setCommentContent(event.target.value);
+  };
+
+  const addComment = (event) => {
+    event.preventDefault();
+
+    const newComment = {
+      _Id: id,
+      content: commentContent,
+      replies: [],
+      user: {
+        username: loggedInUser.name,
+        name: loggedInUser.username,
+      },
+    };
+
+    commentService.createNewComment(newComment);
+    setComments(comments.concat(newComment));
+  };
 
   if (isLoading) {
     return (
@@ -55,13 +100,12 @@ const FeedbackDetailView = () => {
 
         <div className="p-6 bg-white rounded-lg mt-14 md:mx-auto">
           <h1 className="text-lg font-bold text-navy-primary">
-            {feedback.comments.length}{" "}
-            {feedback.comments.length === 1 ? "Comment" : "Comments"}
+            {comments.length} {comments.length === 1 ? "Comment" : "Comments"}
           </h1>
 
-          {feedback.comments.length !== 0 ? (
+          {comments.length !== 0 ? (
             <div className="mt-2 border-grey-50">
-              {feedback.comments.map((comment, index) => (
+              {comments.map((comment, index) => (
                 <FeedbackDetailComment key={index} comment={comment} />
               ))}
             </div>
@@ -70,12 +114,18 @@ const FeedbackDetailView = () => {
           )}
         </div>
 
-        <div className="p-6 bg-white rounded-lg mt-14 md:mx-auto">
+        <form
+          onSubmit={addComment}
+          className="p-6 bg-white rounded-lg mt-14 md:mx-auto"
+        >
           <h1 className="text-lg font-bold text-navy-primary">Add a comment</h1>
           <p className="text-sm font-light text-navy-tertiary">
             Max 250 characters.
           </p>
-          <textarea className="mt-4 bg-main-secondary text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-24 p-2.5"></textarea>
+          <textarea
+            onChange={handleCommentChange}
+            className="mt-4 bg-main-secondary text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full h-24 p-2.5"
+          ></textarea>
           <div className="flex w-full justify-items-end">
             <button
               type="submit"
@@ -84,7 +134,7 @@ const FeedbackDetailView = () => {
               Add Comment
             </button>
           </div>
-        </div>
+        </form>
       </div>
     );
   }

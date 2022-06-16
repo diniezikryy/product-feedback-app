@@ -48,7 +48,6 @@ const AddFeedbackForm = () => {
     };
     feedbackService.createNewFeedback(newFeedback);
     setFeedbacks(feedbacks.concat(newFeedback));
-    console.log(feedbacks);
     setNewMessage("Successfully added new feedback", "success");
     navigate("/", { replace: true });
   };

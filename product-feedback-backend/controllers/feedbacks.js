@@ -48,6 +48,7 @@ feedbacksRouter.post("/", async (req, res, next) => {
 
   // checks the validity of the token and decodes it, if no token is passed, error 'jwt must be provided'
   const decodedToken = jwt.verify(token, process.env.SECRET);
+
   if (!decodedToken.id) {
     // will not be returned if token is undefined
     return response.status(401).json({ error: "token missing or invalid" });
@@ -97,7 +98,7 @@ feedbacksRouter.put("/:id", async (request, response, next) => {
     comments: body.comments.map((comment) => comment.id),
   };
 
-  console.log("updated feedback: ", updatedFeedback);
+  //console.log("updated feedback: ", updatedFeedback);
 
   Feedback.findByIdAndUpdate(request.params.id, updatedFeedback, { new: true })
     .then((updatedFeedback) => {

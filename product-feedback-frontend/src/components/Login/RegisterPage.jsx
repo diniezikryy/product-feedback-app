@@ -5,6 +5,7 @@ import registerService from "../../services/register";
 
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
+import Alerts from "../Elements/Alerts/Alerts";
 
 import NotificationContext from "../../contexts/NotificationContext";
 
@@ -16,7 +17,7 @@ const RegisterPage = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
 
-  const { setNewMessage } = useContext(NotificationContext);
+  const { setNewMessage, message, type } = useContext(NotificationContext);
 
   const navigate = useNavigate();
 
@@ -43,6 +44,16 @@ const RegisterPage = () => {
   const handleRegister = async (event) => {
     event.preventDefault();
 
+    if (username.length < 5) {
+      setNewMessage("Username must have at least 5 characters", "error");
+      return;
+    }
+
+    if (password.length < 5) {
+      setNewMessage("Password must have at least 5 characters", "error");
+      return;
+    }
+
     try {
       const user = await registerService.register({
         name,
@@ -67,6 +78,7 @@ const RegisterPage = () => {
       className="p-6 sm:mx-28 md:max-w-xl md:mx-auto"
       onSubmit={handleRegister}
     >
+      <Alerts type={type} message={message} />
       <div className="mt-8">
         <Link to="/">
           <ButtonTertiary buttonText="Go Back" />

@@ -28,6 +28,10 @@ const LoginPage = () => {
 
   const handleLogin = async (event) => {
     event.preventDefault();
+    if (username === "" || password === "") {
+      setNewMessage("Username or password cannot be empty!", "error");
+      return;
+    }
 
     try {
       const user = await loginService.login({
@@ -45,7 +49,9 @@ const LoginPage = () => {
       navigate("/");
       setNewMessage("Successfully logged in!", "success");
     } catch (exception) {
+      setNewMessage("Invalid username or password", "error");
       console.log(exception);
+      // next(exception);
     }
   };
 

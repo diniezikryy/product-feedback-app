@@ -12,6 +12,7 @@ import { ReactComponent as EditFeedbackIcon } from "./icon-edit-feedback.svg";
 import feedbackService from "../../services/feedback";
 
 import NotificationContext from "../../contexts/NotificationContext";
+import Alerts from "../Elements/Alerts/Alerts";
 
 const EditFeedbackForm = () => {
   const [feedback, setFeedback] = useState(null);
@@ -20,7 +21,7 @@ const EditFeedbackForm = () => {
   const [feedbackCategory, setFeedbackCategory] = useState("Feature");
   const [feedbackDetail, setFeedbackDetail] = useState("");
 
-  const { setNewMessage } = useContext(NotificationContext);
+  const { setNewMessage, message, type } = useContext(NotificationContext);
 
   const id = useParams().id;
 
@@ -52,7 +53,15 @@ const EditFeedbackForm = () => {
   const editFeedback = (event) => {
     event.preventDefault();
 
-    console.log("feedback: ", feedback);
+    if (feedbackTitle.length < 1) {
+      setNewMessage("Feedback title cannot be empty!", "error");
+      return;
+    }
+
+    if (feedbackDetail.length < 1) {
+      setNewMessage("Feedback description cannpt be empty!", "error");
+      return;
+    }
 
     const editedFeedback = {
       ...feedback,
@@ -62,9 +71,8 @@ const EditFeedbackForm = () => {
       user: feedback.user.id,
     };
 
-    console.log("editedFeedback: ", editedFeedback);
-
     feedbackService.editFeedback(editedFeedback);
+    navigate("/");
   };
 
   if (isLoading) {
@@ -96,6 +104,7 @@ const EditFeedbackForm = () => {
         onSubmit={editFeedback}
         className="p-6 sm:mx-28 md:max-w-xl md:mx-auto"
       >
+        <Alerts message={message} type={type} />
         <div className="mt-8">
           <Link to="/">
             <ButtonTertiary buttonText="Go Back" />

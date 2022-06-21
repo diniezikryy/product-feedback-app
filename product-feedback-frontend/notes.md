@@ -284,6 +284,6 @@ See hover states for all interactive elements on the page ✅
 Create, read, update, and delete product feedback requests ✅
 Receive form validations when trying to create/edit feedback requests
 Sort suggestions by most/least upvotes and most/least comments ✅
-Filter suggestions by category
+Filter suggestions by category ✅
 Add comments and replies to a product feedback request ✅ (replies not implemented)
-Upvote product feedback requests
+Upvote product feedback requests ✅

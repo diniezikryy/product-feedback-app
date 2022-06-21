@@ -13,13 +13,14 @@ import NotificationContext from "../../contexts/NotificationContext";
 import FeedbackContext from "../../contexts/FeedbackContext";
 
 import feedbackService from "../../services/feedback";
+import Alerts from "../Elements/Alerts/Alerts";
 
 const AddFeedbackForm = () => {
   const [feedbackTitle, setFeedbackTitle] = useState("");
   const [feedbackCategory, setFeedbackCategory] = useState("Feature");
   const [feedbackDetail, setFeedbackDetail] = useState("");
 
-  const { setNewMessage } = useContext(NotificationContext);
+  const { setNewMessage, message, type } = useContext(NotificationContext);
   const { feedbacks, setFeedbacks } = useContext(FeedbackContext);
 
   const navigate = useNavigate();
@@ -38,18 +39,33 @@ const AddFeedbackForm = () => {
 
   const addFeedback = (event) => {
     event.preventDefault();
-    const newFeedback = {
-      title: feedbackTitle,
-      category: feedbackCategory,
-      upvotes: 0,
-      status: "suggestion",
-      description: feedbackDetail,
-      comments: [],
-    };
-    feedbackService.createNewFeedback(newFeedback);
-    setFeedbacks(feedbacks.concat(newFeedback));
-    setNewMessage("Successfully added new feedback", "success");
-    navigate("/", { replace: true });
+
+    if (feedbackTitle.length < 1) {
+      setNewMessage("Feedback title cannot be empty!", "error");
+      return;
+    }
+
+    if (feedbackDetail.length < 1) {
+      setNewMessage("Feedback description cannpt be empty!", "error");
+      return;
+    }
+
+    try {
+      const newFeedback = {
+        title: feedbackTitle,
+        category: feedbackCategory,
+        upvotes: 0,
+        status: "suggestion",
+        description: feedbackDetail,
+        comments: [],
+      };
+      feedbackService.createNewFeedback(newFeedback);
+      setFeedbacks(feedbacks.concat(newFeedback));
+      setNewMessage("Successfully added new feedback", "success");
+      navigate("/", { replace: true });
+    } catch (exception) {
+      console.log(exception);
+    }
   };
 
   return (
@@ -57,6 +73,7 @@ const AddFeedbackForm = () => {
       onSubmit={addFeedback}
       className="p-6 sm:mx-28 md:max-w-xl md:mx-auto"
     >
+      <Alerts message={message} type={type} />
       <div className="mt-8">
         <Link to="/">
           <ButtonTertiary buttonText="Go Back" />

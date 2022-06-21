@@ -4,6 +4,7 @@ import Hero from "./Hero";
 import FeedbackNavbar from "./FeedbackNavbar/FeedbackNavbar";
 import FeedbackCategory from "./FeedbackCategory";
 import FeedbackList from "./FeedbackList/FeedbackList";
+import FeedbackRoadmap from "./FeedbackRoadmap";
 import Slideover from "./Slideover";
 import Alerts from "../Elements/Alerts/Alerts";
 
@@ -14,6 +15,8 @@ import NotificationContext from "../../contexts/NotificationContext";
 import FeedbackContext from "../../contexts/FeedbackContext";
 
 const Homepage = () => {
+  const categories = ["All", "UI", "UX", "Enhancement", "Bug", "Feature"];
+
   const [open, setOpen] = useState(false);
   const [showFeedbacks, setShowFeedbacks] = useState(false);
   const [sortOption, setSortOption] = useState("Most Upvotes");
@@ -46,6 +49,24 @@ const Homepage = () => {
     setSortOption(sort);
   };
 
+  const filteredFeedbacks = (feedbacks) => {
+    if (selectedCategory === "UI") {
+      return feedbacks.filter((feedback) => feedback.category === "UI");
+    } else if (selectedCategory === "UX") {
+      return feedbacks.filter((feedback) => feedback.category === "UX");
+    } else if (selectedCategory === "Enhancement") {
+      return feedbacks.filter(
+        (feedback) => feedback.category === "Enhancement"
+      );
+    } else if (selectedCategory === "Bug") {
+      return feedbacks.filter((feedback) => feedback.category === "Bug");
+    } else if (selectedCategory === "Feature") {
+      return feedbacks.filter((feedback) => feedback.category === "Feature");
+    } else if (selectedCategory === "All") {
+      return feedbacks;
+    }
+  };
+
   const sortedFeedbacks = (feedbacks) => {
     if (sortOption === "Most Upvotes") {
       return feedbacks.sort((a, b) => b.upvotes - a.upvotes);
@@ -66,7 +87,12 @@ const Homepage = () => {
         <div className="flex flex-row gap-x-8">
           <div className="flex flex-col gap-y-6">
             <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
-            <FeedbackCategory />
+            <FeedbackCategory
+              categories={categories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
+            />
+            <FeedbackRoadmap />
           </div>
 
           <div className="flex flex-col w-full">
@@ -76,7 +102,7 @@ const Homepage = () => {
               updateSortOption={updateSortOption}
             />
             <FeedbackList
-              feedbacks={sortedFeedbacks(feedbacks)}
+              feedbacks={filteredFeedbacks(sortedFeedbacks(feedbacks))}
               showFeedbacks={showFeedbacks}
               sortOption={sortOption}
             />
@@ -88,9 +114,11 @@ const Homepage = () => {
         <div className="flex flex-row justify-between mb-10">
           <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
           <FeedbackCategory
+            categories={categories}
             selectedCategory={selectedCategory}
             setSelectedCategory={setSelectedCategory}
           />
+          <FeedbackRoadmap />
         </div>
       </div>
       {/* When screen is < 640px (Mobile Screens) */}
@@ -98,7 +126,12 @@ const Homepage = () => {
         <Hero handleSlideoverOpen={handleSlideoverOpen} open={open} />
       </div>
       <div className="hidden">
-        <FeedbackCategory />
+        <FeedbackCategory
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
+        <FeedbackRoadmap />
       </div>
       {/* Slideover */}
       <div className="sm:hidden">
@@ -110,7 +143,10 @@ const Homepage = () => {
           sortOption={sortOption}
           updateSortOption={updateSortOption}
         />
-        <FeedbackList feedbacks={feedbacks} showFeedbacks={showFeedbacks} />
+        <FeedbackList
+          feedbacks={filteredFeedbacks(sortedFeedbacks(feedbacks))}
+          showFeedbacks={showFeedbacks}
+        />
       </div>
     </div>
   );

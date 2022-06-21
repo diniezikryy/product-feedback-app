@@ -1,4 +1,6 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
+
+import NotificationContext from "./NotificationContext";
 
 const UserContext = createContext();
 

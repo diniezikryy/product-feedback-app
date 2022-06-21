@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
 import ButtonSecondary from "../Elements/Buttons/ButtonSecondary";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
@@ -11,15 +11,16 @@ import { ReactComponent as EditFeedbackIcon } from "./icon-edit-feedback.svg";
 
 import feedbackService from "../../services/feedback";
 
+import NotificationContext from "../../contexts/NotificationContext";
+
 const EditFeedbackForm = () => {
   const [feedback, setFeedback] = useState(null);
-  const [userId, setUserId] = useState("");
   const [isLoading, setLoading] = useState(true);
   const [feedbackTitle, setFeedbackTitle] = useState("");
   const [feedbackCategory, setFeedbackCategory] = useState("Feature");
   const [feedbackDetail, setFeedbackDetail] = useState("");
-  const [feedbackUpvotes, setFeedbackUpvotes] = useState(0);
-  const [feedbackComments, setFeedbackComments] = useState([]);
+
+  const { setNewMessage } = useContext(NotificationContext);
 
   const id = useParams().id;
 
@@ -27,12 +28,9 @@ const EditFeedbackForm = () => {
     feedbackService.getAll().then((initalFeedbacks) => {
       setFeedback(initalFeedbacks.find((feedback) => feedback.id === id));
       const feedback = initalFeedbacks.find((feedback) => feedback.id === id);
-      setUserId(feedback.user);
       setFeedbackTitle(feedback.title);
       setFeedbackCategory(feedback.category);
-      setFeedbackUpvotes(feedback.upvotes);
       setFeedbackDetail(feedback.description);
-      setFeedbackComments(feedback.comments);
       setLoading(false);
     });
   }, []);

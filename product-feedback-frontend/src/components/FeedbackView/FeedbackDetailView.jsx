@@ -4,10 +4,12 @@ import { useState, useContext, useEffect } from "react";
 import ButtonTertiary from "../Elements/Buttons/ButtonTertiary";
 import FeedbackDetail from "../FeedbackView/FeedbackDetail";
 import FeedbackDetailComment from "./FeedbackDetailComment";
+import Alerts from "../Elements/Alerts/Alerts";
 
 import feedbackService from "../../services/feedback";
 import commentService from "../../services/comment";
 
+import NotificationContext from "../../contexts/NotificationContext";
 import UserContext from "../../contexts/UserContext";
 
 const FeedbackDetailView = () => {
@@ -16,9 +18,10 @@ const FeedbackDetailView = () => {
   const [comments, setComments] = useState([]);
   const [commentContent, setCommentContent] = useState("");
   const [user, setUser] = useState("");
-  const [showDelete, setShowDelete] = useState(false);
+  const [showDelete, setShowDelete] = useState(true);
 
   const { loggedInUser, setLoggedInUser } = useContext(UserContext);
+  const { message, type, setNewMessage } = useContext(NotificationContext);
 
   const id = useParams().id;
 
@@ -64,7 +67,10 @@ const FeedbackDetailView = () => {
     };
 
     commentService.createNewComment(newComment);
-    setComments(comments.concat(newComment));
+    setComments(feedback.comments.concat(newComment));
+    setNewMessage("Your comment has been added!", "success");
+
+    console.log(comments);
   };
 
   if (isLoading) {
@@ -93,6 +99,7 @@ const FeedbackDetailView = () => {
   } else {
     return (
       <div className="p-6 sm:mx-28 md:max-w-xl md:mx-auto">
+        <Alerts type={type} message={message} />
         <div className="flex items-center justify-between mt-8">
           <div>
             <Link to="/">
@@ -101,7 +108,7 @@ const FeedbackDetailView = () => {
           </div>
 
           <div>
-            {loggedInUser === user && (
+            {showDelete && (
               <Link to={`/edit-feedback/${feedback.id}`}>
                 <button className="w-full px-6 py-3 text-sm font-semibold leading-5 text-center text-white rounded-lg cursor-pointer text-b bg-fuchsia-600 hover:bg-fuchsia-400">
                   Edit Feedback
@@ -113,7 +120,7 @@ const FeedbackDetailView = () => {
 
         <FeedbackDetail feedback={feedback} />
 
-        <div className="p-6 bg-white rounded-lg mt-14 md:mx-auto">
+        <div className="p-6 mt-6 bg-white rounded-lg md:mx-auto">
           <h1 className="text-lg font-bold text-navy-primary">
             {comments.length} {comments.length === 1 ? "Comment" : "Comments"}
           </h1>
@@ -131,7 +138,7 @@ const FeedbackDetailView = () => {
 
         <form
           onSubmit={addComment}
-          className="p-6 bg-white rounded-lg mt-14 md:mx-auto"
+          className="p-6 mt-6 bg-white rounded-lg md:mx-auto"
         >
           <h1 className="text-lg font-bold text-navy-primary">Add a comment</h1>
           <p className="text-sm font-light text-navy-tertiary">

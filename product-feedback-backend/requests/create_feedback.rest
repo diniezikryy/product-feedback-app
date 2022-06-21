@@ -1,6 +1,13 @@
-POST http://localhost:3001/api/notes/
+POST http://localhost:3001/api/feedbacks/
 Content-Type: application/json
 
+
 {
-    
+    "title": "body.title",
+    "category": "body.category",
+    "upvotes": 0,
+    "status": "body.status",
+    "description": "body.description",
+    "user": "user._id",
+    "comments": []
 }

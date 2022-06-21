@@ -135,7 +135,13 @@ const Homepage = () => {
       </div>
       {/* Slideover */}
       <div className="sm:hidden">
-        <Slideover open={open} setOpen={handleSlideoverOpen} />
+        <Slideover
+          open={open}
+          setOpen={handleSlideoverOpen}
+          categories={categories}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+        />
       </div>
       <div className="lg:hidden">
         <FeedbackNavbar
